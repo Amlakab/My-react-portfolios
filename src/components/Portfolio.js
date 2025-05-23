@@ -2,8 +2,8 @@ import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence, useAnimation, useInView } from 'framer-motion';
 import { Container, Row, Col, Navbar, Nav } from 'react-bootstrap';
 import { FiGithub, FiLinkedin, FiMail, FiDownload, FiExternalLink, FiArrowUp } from 'react-icons/fi';
-import { FaReact, FaNodeJs, FaPython, FaJava, FaPhone, FaMapMarker, FaSun, FaMoon, FaServer, FaMapMarkedAlt, FaChevronCircleRight } from 'react-icons/fa';
-import { SiTypescript, SiMongodb, SiPostgresql, SiFramer } from 'react-icons/si';
+import { FaReact, FaNodeJs, FaPython, FaJava, FaPhone, FaMapMarker, FaSun, FaMoon, FaServer, FaMapMarkedAlt, FaChevronCircleRight, FaCss3Alt, FaHtml5, FaJs } from 'react-icons/fa';
+import { SiTypescript, SiMongodb, SiPostgresql, SiFramer, SiPhp, SiMysql, SiSpringboot, SiBootstrap, SiTailwindcss, SiNextdotjs } from 'react-icons/si';
 import { useTheme } from '../context/ThemeContext';
 import { BsTelegram, BsTwitter } from 'react-icons/bs';
 import { IoMdMail } from 'react-icons/io';
@@ -77,16 +77,16 @@ const Portfolio = () => {
       id: 1,
       title: "E-commerce Platform",
       description: "Amazon-like shopping with AR product preview",
-      tags: ["React", "Node.js", "AR.js"],
+      tags: ["Next.js","Typescript", "Node.js", "MongoDB"],
       image: "/images/ecommerce.png",
       github: "https://github.com/Amlakab/Amlakie-e-commerce",
       link: "https://amlakie-e-commerce.vercel.app/"
     },
     {
       id: 2,
-      title: "Portfolio Template",
+      title: "My Portfolio Website",
       description: "Customizable 3D portfolio with interactive elements",
-      tags: ["React", "Framer Motion", "Three.js"],
+      tags: ["React", "JavaScript", "Bootstrap"],
       image: "/images/my-portfolio.png",
       github: "https://github.com/Amlakab/project1",
       link: "https://my-react-portfolios.vercel.app/"
@@ -95,7 +95,7 @@ const Portfolio = () => {
       id: 3,
       title: "Scientific Calculator",
       description: "Advanced calculator with 3D graphing capabilities",
-      tags: ["JavaScript", "WebGL", "MathJS"],
+      tags: ["Next.js", "Typescript", "Tailwind CSS"],
       image: "/images/calculator.png",
       github: "https://github.com/Amlakab/Calculator",
       link: "https://Calculator.vercel.app/"
@@ -104,7 +104,7 @@ const Portfolio = () => {
       id: 4,
       title: "INSA Website",
       description: "Interactive institutional portal with virtual campus tour",
-      tags: ["React", "Three.js", "Firebase"],
+      tags: ["React", "JavaScript", "MYSQL", "Bootstrap"],
       image: "/images/insa-website.png",
       github: "https://github.com/Amlakab/INSA-WEB",
       link: "https://insa-web.vercel.app/"
@@ -113,7 +113,7 @@ const Portfolio = () => {
       id: 5,
       title: "Hospital Management System",
       description: "Comprehensive system for patient records, appointments, and billing with AI diagnostics integration",
-      tags: ["React", "Node.js", "MongoDB", "AI"],
+      tags: ["HTML", "CSS", "Javascript", "MYSQL", "Bootstrap"],
       image: "/images/hospital-system.png",
       github: "https://github.com/Amlakab/HIMS"
 
@@ -122,7 +122,7 @@ const Portfolio = () => {
       id: 6,
       title: "Transport Management",
       description: "Fleet tracking with real-time logistics optimization",
-      tags: ["React", "Python", "PostgreSQL"],
+      tags: ["Next.js","TypeScript", "Tailwind CSS", "MYSQL", "Spring Boot"],
       image: "/images/transport-system2.png",
       github: "https://github.com/Amlakab/TMS"
 
@@ -206,23 +206,29 @@ const Portfolio = () => {
     { number: "3", label: "Years Experience" }
   ];
 
-// Separate skills into frontend and backend arrays
+// Frontend skills
 const frontendSkills = [
-  { name: "React", value: 95, icon: <FaReact />, category: "frontend" },
-  { name: "TypeScript", value: 85, icon: <SiTypescript />, category: "frontend" },
-  { name: "Framer Motion", value: 85, icon: <SiFramer />, category: "frontend" },
-  { name: "TypeScript", value: 85, icon: <SiTypescript />, category: "frontend" },
-  { name: "Framer Motion", value: 85, icon: <SiFramer />, category: "frontend" }
+  { name: "HTML", value: 100, icon: <FaHtml5 />, category: "frontend" },
+  { name: "CSS", value: 95, icon: <FaCss3Alt />, category: "frontend" },
+  { name: "JavaScript", value: 95, icon: <FaJs />, category: "frontend" },
+  { name: "React.js", value: 85, icon: <FaReact />, category: "frontend" },
+  { name: "Next.js", value: 85, icon: <SiNextdotjs />, category: "frontend" },
+  { name: "Tailwind CSS", value: 85, icon: <SiTailwindcss />, category: "frontend" },
+  { name: "Bootstrap", value: 85, icon: <SiBootstrap />, category: "frontend" },
+  { name: "TypeScript", value: 75, icon: <SiTypescript />, category: "frontend" },
 ];
 
+// Backend skills
 const backendSkills = [
-  { name: "Node.js", value: 90, icon: <FaNodeJs />, category: "backend" },
-  { name: "Python", value: 80, icon: <FaPython />, category: "backend" },
-  { name: "MongoDB", value: 75, icon: <SiMongodb />, category: "backend" },
-  { name: "PostgreSQL", value: 70, icon: <SiPostgresql />, category: "backend" },
-  { name: "Java", value: 65, icon: <FaJava />, category: "backend" }
+  { name: "PHP", value: 90, icon: <SiPhp />, category: "backend" },
+  { name: "MySQL", value: 85, icon: <SiMysql />, category: "backend" },
+  { name: "Spring Boot", value: 80, icon: <SiSpringboot />, category: "backend" },
+  { name: "Java", value: 80, icon: <FaJava />, category: "backend" },
+  { name: "Node.js", value: 75, icon: <FaNodeJs />, category: "backend" },
+  { name: "MongoDB", value: 65, icon: <SiMongodb />, category: "backend" },
+  { name: "PostgreSQL", value: 65, icon: <SiPostgresql />, category: "backend" },
+  { name: "Python", value: 60, icon: <FaPython />, category: "backend" },
 ];
-
 
   // Animation variants
   const fadeInUp = {
@@ -498,8 +504,8 @@ const backendSkills = [
                     fontFamily: "'Poppins', sans-serif"
                   }}
                 >
-                  {names[nameIndex] === "Amlakie" ? "Full Stack Developer" : 
-                   names[nameIndex] === "Developer" ? "React Specialist" :
+                  {names[nameIndex] === "Amlakie" ? "Software Engineer" : 
+                   names[nameIndex] === "Developer" ? "Full Stack Developer" :
                    names[nameIndex] === "Designer" ? "UI/UX Expert" : "Innovative Creator"}
                 </motion.h2>
                 <p 
