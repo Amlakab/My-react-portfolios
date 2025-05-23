@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence, useAnimation, useInView } from 'framer-motion';
 import { Container, Row, Col, Navbar, Nav } from 'react-bootstrap';
 import { FiGithub, FiLinkedin, FiMail, FiDownload, FiExternalLink } from 'react-icons/fi';
-import { FaReact, FaNodeJs, FaPython, FaJava, FaPhone, FaMapMarker, FaSun, FaMoon } from 'react-icons/fa';
+import { FaReact, FaNodeJs, FaPython, FaJava, FaPhone, FaMapMarker, FaSun, FaMoon, FaServer } from 'react-icons/fa';
 import { SiTypescript, SiMongodb, SiPostgresql, SiFramer } from 'react-icons/si';
 import { useTheme } from '../context/ThemeContext';
 
@@ -91,7 +91,6 @@ const Portfolio = () => {
     element?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  // Sample data
   const projects = [
     {
       id: 1,
@@ -99,7 +98,8 @@ const Portfolio = () => {
       description: "Comprehensive system for patient records, appointments, and billing with AI diagnostics integration",
       tags: ["React", "Node.js", "MongoDB", "AI"],
       image: "/images/hospital-system.png",
-      width: "wide"
+      github: "https://github.com/yourusername/project1"
+
     },
     {
       id: 2,
@@ -107,25 +107,72 @@ const Portfolio = () => {
       description: "Fleet tracking with real-time logistics optimization",
       tags: ["React", "Python", "PostgreSQL"],
       image: "/images/transport-system.png",
-      width: "narrow"
+      github: "https://github.com/yourusername/project1"
+
+    },
+    {
+      id: 3,
+      title: "Scientific Calculator",
+      description: "Advanced calculator with 3D graphing capabilities",
+      tags: ["JavaScript", "WebGL", "MathJS"],
+      image: "/images/calculator.png",
+      github: "https://github.com/yourusername/project1"
+    },
+    {
+      id: 4,
+      title: "INSA Website",
+      description: "Interactive institutional portal with virtual campus tour",
+      tags: ["React", "Three.js", "Firebase"],
+      image: "/images/insa-website.png",
+      github: "https://github.com/yourusername/project1"
+    },
+    {
+      id: 5,
+      title: "E-commerce Platform",
+      description: "Amazon-like shopping with AR product preview",
+      tags: ["React", "Node.js", "AR.js"],
+      image: "/images/ecommerce.png",
+      github: "https://github.com/yourusername/project1"
+    },
+    {
+      id: 6,
+      title: "Portfolio Template",
+      description: "Customizable 3D portfolio with interactive elements",
+      tags: ["React", "Framer Motion", "Three.js"],
+      image: "/images/portfolio-template.png",
+      github: "https://github.com/yourusername/project1"
     }
   ];
 
+  // Experience data
   const experiences = [
     {
       role: "Full Stack Developer",
       company: "Tech Solutions Inc.",
       period: "2021 - Present",
-      description: "Developed AI-powered web applications using modern JavaScript frameworks."
+      description: "Developed AI-powered web applications using modern JavaScript frameworks and implemented responsive UIs with micro-interactions."
+    },
+    {
+      role: "Frontend Architect",
+      company: "Digital Creations",
+      period: "2019 - 2021",
+      description: "Led frontend teams to create immersive web experiences with animations and 3D elements."
     }
   ];
 
+  // Education data
   const education = [
     {
       degree: "Master in Computer Science",
       institution: "University of Technology",
       year: "2018 - 2020",
       description: "Specialized in Human-Computer Interaction and Advanced Web Technologies"
+    },
+    {
+      degree: "Bachelor in Software Engineering",
+      institution: "State University",
+      year: "2014 - 2018",
+      description: "Focused on Full Stack Development and User Experience Design"
     }
   ];
 
@@ -134,8 +181,16 @@ const Portfolio = () => {
       id: 1,
       name: "Sarah Johnson",
       role: "CEO, TechCorp",
-      content: "Amlakie delivered our project ahead of schedule with exceptional quality.",
+      content: "Amlakie delivered our project ahead of schedule with exceptional quality. His attention to detail and problem-solving skills are remarkable.",
       avatar: "/images/testimonial1.png",
+      rating: 5
+    },
+    {
+      id: 2,
+      name: "Michael Chen",
+      role: "CTO, InnovateX",
+      content: "Working with Amlakie was a pleasure. He transformed our complex requirements into a beautiful, functional application with stunning animations.",
+      avatar: "/images/testimonial2.png",
       rating: 5
     }
   ];
@@ -144,22 +199,44 @@ const Portfolio = () => {
     {
       id: 1,
       title: "Building Scalable React Applications",
-      excerpt: "Learn the best practices for creating React apps that can grow with your user base.",
+      excerpt: "Learn the best practices for creating React apps that can grow with your user base while maintaining performance.",
       date: "May 15, 2023",
       image: "/images/blog1.png",
       category: "React"
+    },
+    {
+      id: 2,
+      title: "The Future of Web Development",
+      excerpt: "Exploring emerging technologies that will shape the next decade of web development including Web3 and AI integration.",
+      date: "April 28, 2023",
+      image: "/images/blog2.png",
+      category: "Web"
     }
   ];
 
   const stats = [
     { number: "25+", label: "Projects Completed" },
-    { number: "15", label: "Happy Clients" }
+    { number: "15", label: "Happy Clients" },
+    { number: "50K+", label: "Lines of Code" },
+    { number: "3", label: "Years Experience" }
   ];
 
-  const skills = [
-    { name: "React", value: 95, icon: <FaReact /> },
-    { name: "Node.js", value: 90, icon: <FaNodeJs /> }
-  ];
+// Separate skills into frontend and backend arrays
+const frontendSkills = [
+  { name: "React", value: 95, icon: <FaReact />, category: "frontend" },
+  { name: "TypeScript", value: 85, icon: <SiTypescript />, category: "frontend" },
+  { name: "Framer Motion", value: 85, icon: <SiFramer />, category: "frontend" },
+  { name: "TypeScript", value: 85, icon: <SiTypescript />, category: "frontend" },
+  { name: "Framer Motion", value: 85, icon: <SiFramer />, category: "frontend" }
+];
+
+const backendSkills = [
+  { name: "Node.js", value: 90, icon: <FaNodeJs />, category: "backend" },
+  { name: "Python", value: 80, icon: <FaPython />, category: "backend" },
+  { name: "MongoDB", value: 75, icon: <SiMongodb />, category: "backend" },
+  { name: "PostgreSQL", value: 70, icon: <SiPostgresql />, category: "backend" },
+  { name: "Java", value: 65, icon: <FaJava />, category: "backend" }
+];
 
   // Animation variants
   const fadeInUp = {
@@ -630,198 +707,372 @@ const Portfolio = () => {
         </Container>
       </section>
 
-      {/* Skills Section */}
-      <section 
-        id="skills" 
-        className="section skills-section"
+
+{/* Skills Section */}
+<section 
+  id="skills" 
+  className="section skills-section"
+  style={{
+    padding: '100px 0',
+    position: 'relative',
+    backgroundColor: getSectionBackground(2),
+    color: colors.textPrimary
+  }}
+>
+  <Container>
+    <motion.div
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: "-100px" }}
+      transition={{ duration: 0.8 }}
+      variants={fadeInUp}
+    >
+      <h2 
+        className="section-title text-center"
         style={{
-          padding: '100px 0',
+          fontSize: 'clamp(2rem, 5vw, 2.8rem)',
+          fontWeight: 700,
+          marginBottom: '60px',
+          color: colors.textPrimary,
+          fontFamily: "'Poppins', sans-serif",
           position: 'relative',
-          backgroundColor: getSectionBackground(2),
-          color: colors.textPrimary
+          display: 'inline-block'
         }}
       >
-        <Container>
+        My Skills
+        <motion.div 
+          style={{
+            position: 'absolute',
+            bottom: '-15px',
+            left: '50%',
+            transform: 'translateX(-50%)',
+            width: '80px',
+            height: '4px',
+            background: `linear-gradient(90deg, ${colors.primary}, ${colors.secondary})`,
+            borderRadius: '2px'
+          }}
+          layoutId="sectionDivider"
+        />
+      </h2>
+      
+      {/* Description Row */}
+      <Row className="mb-5">
+        <Col>
           <motion.div
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
             variants={fadeInUp}
           >
-            <h2 
-              className="section-title text-center"
-              style={{
-                fontSize: 'clamp(2rem, 5vw, 2.8rem)',
-                fontWeight: 700,
-                marginBottom: '60px',
-                color: colors.textPrimary,
-                fontFamily: "'Poppins', sans-serif",
-                position: 'relative',
-                display: 'inline-block'
+            <p style={{ 
+              textAlign: 'center',
+              marginBottom: '30px', 
+              lineHeight: 1.8, 
+              fontSize: '1.1rem',
+              color: colors.textPrimary
+            }}>
+              I've mastered a variety of technologies in the web development world,
+              from backend systems to interactive frontend experiences. My skills evolve
+              with the industry to deliver cutting-edge solutions.
+            </p>
+          </motion.div>
+        </Col>
+      </Row>
+
+      {/* Skills Columns */}
+      <Row>
+        {/* Frontend Skills Column */}
+        <Col lg={6} md={12} className="mb-5 mb-lg-0">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeInLeft}
+            whileHover={{
+              y: -10,
+              boxShadow: `0 20px 40px ${colors.primary}20`,
+              transition: { duration: 0.3 }
+            }}
+            style={{
+              padding: '30px',
+              backgroundColor: isDarkMode ? 'rgba(10, 25, 47, 0.7)' : 'rgba(248, 249, 250, 0.7)',
+              borderRadius: '20px',
+              boxShadow: '0 15px 40px rgba(0, 0, 0, 0.05)',
+              backdropFilter: 'blur(10px)',
+              border: `2px solid transparent`,
+              transition: 'all 0.3s ease'
+            }}
+          >
+            <motion.div
+              whileHover={{ 
+                scale: 1.02,
+                transition: { duration: 0.3 }
               }}
             >
-              My Skills
-              <motion.div 
-                style={{
-                  position: 'absolute',
-                  bottom: '-15px',
-                  left: '50%',
-                  transform: 'translateX(-50%)',
-                  width: '80px',
-                  height: '4px',
-                  background: `linear-gradient(90deg, ${colors.primary}, ${colors.secondary})`,
-                  borderRadius: '2px'
-                }}
-                layoutId="sectionDivider"
-              />
-            </h2>
-            <Row>
-              <Col lg={6} md={12} className="mb-5 mb-lg-0">
-                <motion.div
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true }}
-                  variants={fadeInLeft}
+              <h3 style={{ 
+                fontSize: '1.5rem', 
+                marginBottom: '25px', 
+                color: colors.primary,
+                fontFamily: "'Poppins', sans-serif",
+                textAlign: 'center',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '10px'
+              }}>
+                <motion.span
+                  whileHover={{ rotate: 360 }}
+                  transition={{ duration: 0.8 }}
                 >
-                  <div className="skills-content">
-                    <h3 style={{ 
-                      fontSize: 'clamp(1.5rem, 3vw, 2rem)', 
-                      marginBottom: '25px', 
-                      color: colors.textPrimary,
-                      fontFamily: "'Poppins', sans-serif"
-                    }}>
-                      My technical expertise.
-                    </h3>
-                    <p style={{ 
-                      marginBottom: '30px', 
-                      lineHeight: 1.8, 
-                      fontSize: '1.1rem',
-                      color: colors.textPrimary
-                    }}>
-                      I've mastered a variety of technologies in the web development world,
-                      from backend systems to interactive frontend experiences. My skills evolve
-                      with the industry to deliver cutting-edge solutions.
-                    </p>
-                    <motion.button
-                      whileHover={{ scale: 1.05, boxShadow: `0 5px 15px ${colors.primary}40` }}
-                      whileTap={{ scale: 0.95 }}
-                      className="btn-primary"
-                      style={{
-                        background: `linear-gradient(135deg, ${colors.primary}, ${colors.secondary})`,
-                        color: '#ffffff',
-                        border: 'none',
-                        padding: '15px 30px',
-                        borderRadius: '50px',
-                        fontWeight: 600,
-                        cursor: 'pointer',
-                        display: 'inline-flex',
-                        alignItems: 'center',
-                        fontSize: '1rem',
-                        boxShadow: `0 5px 15px ${colors.primary}30`
-                      }}
-                    >
-                      View Full Skillset
-                    </motion.button>
-                  </div>
-                </motion.div>
-              </Col>
-              <Col lg={6} md={12}>
-                <motion.div
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true }}
-                  variants={fadeInRight}
+                  <FaReact />
+                </motion.span>
+                Frontend Skills
+              </h3>
+              {frontendSkills.map((skill, index) => (
+                <motion.div 
+                  className="progress-item" 
+                  key={index}
+                  style={{ marginBottom: '25px' }}
+                  whileHover={{
+                    x: 10,
+                    transition: { duration: 0.2 }
+                  }}
                 >
                   <div 
-                    className="skills-progress"
+                    className="progress-header"
+                    style={{ display: 'flex', alignItems: 'center', marginBottom: '12px' }}
+                  >
+                    <motion.span 
+                      className="skill-icon"
+                      style={{ 
+                        fontSize: '1.5rem', 
+                        marginRight: '15px',
+                        color: colors.primary
+                      }}
+                      whileHover={{ scale: 1.2 }}
+                    >
+                      {skill.icon}
+                    </motion.span>
+                    <span 
+                      className="skill-name"
+                      style={{ 
+                        fontWeight: 600, 
+                        flexGrow: 1,
+                        fontSize: '1.1rem',
+                        color: colors.textPrimary
+                      }}
+                    >
+                      {skill.name}
+                    </span>
+                    <motion.span 
+                      className="skill-percent"
+                      style={{ 
+                        fontWeight: 700,
+                        color: colors.primary,
+                        fontSize: '1.1rem'
+                      }}
+                      whileHover={{ scale: 1.1 }}
+                    >
+                      {skill.value}%
+                    </motion.span>
+                  </div>
+                  <motion.div
+                    className="progress-bar"
+                    initial={{ width: 0 }}
+                    whileInView={{ width: "100%" }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 1.5, delay: index * 0.1 }}
                     style={{
-                      padding: '30px',
-                      backgroundColor: isDarkMode ? 'rgba(10, 25, 47, 0.7)' : 'rgba(248, 249, 250, 0.7)',
-                      borderRadius: '20px',
-                      boxShadow: '0 15px 40px rgba(0, 0, 0, 0.05)',
-                      backdropFilter: 'blur(10px)'
+                      width: '100%',
+                      height: '10px',
+                      backgroundColor: isDarkMode ? '#112240' : '#e9ecef',
+                      borderRadius: '5px',
+                      overflow: 'hidden'
                     }}
                   >
-                    {skills.map((skill, index) => (
-                      <div 
-                        className="progress-item" 
-                        key={index}
-                        style={{ marginBottom: '25px' }}
-                      >
-                        <div 
-                          className="progress-header"
-                          style={{ display: 'flex', alignItems: 'center', marginBottom: '12px' }}
-                        >
-                          <span 
-                            className="skill-icon"
-                            style={{ 
-                              fontSize: '1.5rem', 
-                              marginRight: '15px',
-                              color: colors.primary
-                            }}
-                          >
-                            {skill.icon}
-                          </span>
-                          <span 
-                            className="skill-name"
-                            style={{ 
-                              fontWeight: 600, 
-                              flexGrow: 1,
-                              fontSize: '1.1rem',
-                              color: colors.textPrimary
-                            }}
-                          >
-                            {skill.name}
-                          </span>
-                          <span 
-                            className="skill-percent"
-                            style={{ 
-                              fontWeight: 700,
-                              color: colors.primary,
-                              fontSize: '1.1rem'
-                            }}
-                          >
-                            {skill.value}%
-                          </span>
-                        </div>
-                        <motion.div
-                          className="progress-bar"
-                          initial={{ width: 0 }}
-                          whileInView={{ width: "100%" }}
-                          viewport={{ once: true }}
-                          transition={{ duration: 1.5, delay: index * 0.1 }}
-                          style={{
-                            width: '100%',
-                            height: '10px',
-                            backgroundColor: isDarkMode ? '#112240' : '#e9ecef',
-                            borderRadius: '5px',
-                            overflow: 'hidden'
-                          }}
-                        >
-                          <motion.div
-                            className="progress-fill"
-                            initial={{ width: 0 }}
-                            whileInView={{ width: `${skill.value}%` }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 1.5, delay: index * 0.1 + 0.3 }}
-                            style={{
-                              height: '100%',
-                              background: `linear-gradient(90deg, ${colors.primary}, ${colors.secondary})`,
-                              borderRadius: '5px',
-                              boxShadow: `0 2px 10px ${colors.primary}30`
-                            }}
-                          />
-                        </motion.div>
-                      </div>
-                    ))}
-                  </div>
+                    <motion.div
+                      className="progress-fill"
+                      initial={{ width: 0 }}
+                      whileInView={{ width: `${skill.value}%` }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 1.5, delay: index * 0.1 + 0.3 }}
+                      style={{
+                        height: '100%',
+                        background: `linear-gradient(90deg, ${colors.primary}, ${colors.secondary})`,
+                        borderRadius: '5px',
+                        boxShadow: `0 2px 10px ${colors.primary}30`
+                      }}
+                    />
+                  </motion.div>
                 </motion.div>
-              </Col>
-            </Row>
+              ))}
+            </motion.div>
           </motion.div>
-        </Container>
-      </section>
+        </Col>
+        
+        {/* Backend Skills Column */}
+        <Col lg={6} md={12}>
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeInRight}
+            whileHover={{
+              y: -10,
+              boxShadow: `0 20px 40px ${colors.secondary}20`,
+              transition: { duration: 0.3 }
+            }}
+            style={{
+              padding: '30px',
+              backgroundColor: isDarkMode ? 'rgba(10, 25, 47, 0.7)' : 'rgba(248, 249, 250, 0.7)',
+              borderRadius: '20px',
+              boxShadow: '0 15px 40px rgba(0, 0, 0, 0.05)',
+              backdropFilter: 'blur(10px)',
+              border: `2px solid transparent`,
+              transition: 'all 0.3s ease'
+            }}
+          >
+            <motion.div
+              whileHover={{ 
+                scale: 1.02,
+                transition: { duration: 0.3 }
+              }}
+            >
+              <h3 style={{ 
+                fontSize: '1.5rem', 
+                marginBottom: '25px', 
+                color: colors.secondary,
+                fontFamily: "'Poppins', sans-serif",
+                textAlign: 'center',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '10px'
+              }}>
+                <motion.span
+                  whileHover={{ rotate: 360 }}
+                  transition={{ duration: 0.8 }}
+                >
+                  <FaServer />
+                </motion.span>
+                Backend Skills
+              </h3>
+              {backendSkills.map((skill, index) => (
+                <motion.div 
+                  className="progress-item" 
+                  key={index}
+                  style={{ marginBottom: '25px' }}
+                  whileHover={{
+                    x: 10,
+                    transition: { duration: 0.2 }
+                  }}
+                >
+                  <div 
+                    className="progress-header"
+                    style={{ display: 'flex', alignItems: 'center', marginBottom: '12px' }}
+                  >
+                    <motion.span 
+                      className="skill-icon"
+                      style={{ 
+                        fontSize: '1.5rem', 
+                        marginRight: '15px',
+                        color: colors.secondary
+                      }}
+                      whileHover={{ scale: 1.2 }}
+                    >
+                      {skill.icon}
+                    </motion.span>
+                    <span 
+                      className="skill-name"
+                      style={{ 
+                        fontWeight: 600, 
+                        flexGrow: 1,
+                        fontSize: '1.1rem',
+                        color: colors.textPrimary
+                      }}
+                    >
+                      {skill.name}
+                    </span>
+                    <motion.span 
+                      className="skill-percent"
+                      style={{ 
+                        fontWeight: 700,
+                        color: colors.secondary,
+                        fontSize: '1.1rem'
+                      }}
+                      whileHover={{ scale: 1.1 }}
+                    >
+                      {skill.value}%
+                    </motion.span>
+                  </div>
+                  <motion.div
+                    className="progress-bar"
+                    initial={{ width: 0 }}
+                    whileInView={{ width: "100%" }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 1.5, delay: index * 0.1 }}
+                    style={{
+                      width: '100%',
+                      height: '10px',
+                      backgroundColor: isDarkMode ? '#112240' : '#e9ecef',
+                      borderRadius: '5px',
+                      overflow: 'hidden'
+                    }}
+                  >
+                    <motion.div
+                      className="progress-fill"
+                      initial={{ width: 0 }}
+                      whileInView={{ width: `${skill.value}%` }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 1.5, delay: index * 0.1 + 0.3 }}
+                      style={{
+                        height: '100%',
+                        background: `linear-gradient(90deg, ${colors.secondary}, ${colors.primary})`,
+                        borderRadius: '5px',
+                        boxShadow: `0 2px 10px ${colors.secondary}30`
+                      }}
+                    />
+                  </motion.div>
+                </motion.div>
+              ))}
+            </motion.div>
+          </motion.div>
+        </Col>
+      </Row>
+      
+      {/* View Full Skillset Button */}
+      <Row className="mt-5">
+        <Col className="text-center">
+          <motion.button
+            whileHover={{ 
+              scale: 1.05, 
+              boxShadow: `0 5px 15px ${colors.primary}40`,
+              background: `linear-gradient(135deg, ${colors.secondary}, ${colors.primary})`
+            }}
+            whileTap={{ scale: 0.95 }}
+            className="btn-primary"
+            style={{
+              background: `linear-gradient(135deg, ${colors.primary}, ${colors.secondary})`,
+              color: '#ffffff',
+              border: 'none',
+              padding: '15px 30px',
+              borderRadius: '50px',
+              fontWeight: 600,
+              cursor: 'pointer',
+              display: 'inline-flex',
+              alignItems: 'center',
+              fontSize: '1rem',
+              boxShadow: `0 5px 15px ${colors.primary}30`,
+              transition: 'all 0.3s ease'
+            }}
+          >
+            View Full Skillset
+          </motion.button>
+        </Col>
+      </Row>
+    </motion.div>
+  </Container>
+</section>
 
       {/* Experience Section */}
       <section 
@@ -1035,103 +1286,318 @@ const Portfolio = () => {
         </Container>
       </section>
 
-      {/* Work Section */}
+
+{/* Work Section */}
+<section 
+  id="work" 
+  className="section work-section"
+  style={{
+    padding: '100px 0',
+    position: 'relative',
+    backgroundColor: getSectionBackground(5),
+    color: colors.textPrimary
+  }}
+>
+  <Container>
+    <motion.div
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-100px" }}
+      transition={{ duration: 0.8 }}
+    >
+      <h2 
+        className="section-title text-center"
+        style={{
+          fontSize: 'clamp(2rem, 5vw, 2.8rem)',
+          fontWeight: 700,
+          marginBottom: '60px',
+          color: colors.textPrimary,
+          fontFamily: "'Poppins', sans-serif",
+          position: 'relative',
+          display: 'inline-block'
+        }}
+      >
+        My Work
+        <motion.div 
+          style={{
+            position: 'absolute',
+            bottom: '-15px',
+            left: '50%',
+            transform: 'translateX(-50%)',
+            width: '80px',
+            height: '4px',
+            background: `linear-gradient(90deg, ${colors.primary}, ${colors.secondary})`,
+            borderRadius: '2px'
+          }}
+          layoutId="sectionDivider"
+        />
+      </h2>
+
+      <div className="project-filter mb-5" style={{ 
+        display: 'flex',
+        justifyContent: 'center',
+        flexWrap: 'wrap',
+        gap: '15px'
+      }}>
+        {['All', 'Web', 'Mobile', 'Design', 'Full Stack'].map((filter, index) => (
+          <motion.button
+            key={index}
+            whileHover={{ 
+              scale: 1.05, 
+              backgroundColor: colors.primary,
+              color: '#ffffff'
+            }}
+            whileTap={{ scale: 0.95 }}
+            className="filter-btn"
+            style={{
+              backgroundColor: 'transparent',
+              color: colors.textPrimary,
+              border: `1px solid ${colors.primary}`,
+              padding: '8px 20px',
+              borderRadius: '50px',
+              fontWeight: 500,
+              cursor: 'pointer',
+              fontSize: '0.9rem',
+              transition: 'all 0.3s ease'
+            }}
+          >
+            {filter}
+          </motion.button>
+        ))}
+      </div>
+
+      {/* Alternating 2-column layout with responsive */}
+      <style>{`
+        .project-row {
+          display: flex;
+          gap: 30px;
+          width: 100%;
+        }
+        .project-card {
+          min-width: 300px;
+          height: 350px;
+          background-color: ${isDarkMode ? 'rgba(10, 25, 47, 0.5)' : 'rgba(248, 249, 250, 0.7)'};
+          border-radius: 20px;
+          overflow: hidden;
+          box-shadow: 0 10px 30px ${colors.shadow};
+          display: flex;
+          flex-direction: column;
+          transition: all 0.3s ease;
+        }
+        .project-card.wide {
+          flex: 0 0 66.66%;
+        }
+        .project-card.narrow {
+          flex: 0 0 33.33%;
+        }
+
+        @media (max-width: 768px) {
+          .project-row {
+            flex-direction: column;
+          }
+          .project-card.wide,
+          .project-card.narrow {
+            flex: 1 1 100% !important;
+            min-width: auto;
+            height: auto;
+          }
+        }
+      `}</style>
+
+      <div className="project-grid" style={{ display: 'flex', flexDirection: 'column', gap: '30px' }}>
+        {Array.from({ length: Math.ceil(projects.length / 2) }).map((_, rowIndex) => {
+          const firstIndex = rowIndex * 2;
+          const secondIndex = firstIndex + 1;
+          const wideOnRight = rowIndex % 2 === 0;
+
+          const firstProject = projects[firstIndex];
+          const secondProject = projects[secondIndex] || null;
+
+          const leftProject = wideOnRight ? firstProject : secondProject;
+          const rightProject = wideOnRight ? secondProject : firstProject;
+
+          return (
+            <div key={rowIndex} className="project-row">
+              {[leftProject, rightProject].map((proj, i) => {
+                if (!proj) return null;
+                const isWide = (i === 1 && wideOnRight) || (i === 0 && !wideOnRight);
+                return (
+                  <motion.div
+                    key={proj.id}
+                    className={`project-card ${isWide ? 'wide' : 'narrow'}`}
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: i * 0.1 }}
+                    whileHover={{ y: -10, boxShadow: `0 15px 30px ${colors.shadow}` }}
+                    style={{ cursor: 'pointer' }}
+                  >
+                    <div className="project-image" style={{
+                      position: 'relative',
+                      height: '75%',
+                      overflow: 'hidden',
+                    }}>
+                      <img 
+                        src={proj.image} 
+                        alt={proj.title} 
+                        style={{
+                          width: '100%',
+                          height: '100%',
+                          objectFit: 'cover',
+                          transition: 'transform 0.5s ease'
+                        }}
+                      />
+                      <motion.div 
+                        className="project-overlay"
+                        style={{
+                          position: 'absolute',
+                          top: 0,
+                          left: 0,
+                          width: '100%',
+                          height: '100%',
+                          background: `linear-gradient(to top, ${colors.primary}ee, transparent)`,
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          opacity: 0,
+                          transition: 'opacity 0.5s ease-in-out'
+                        }}
+                        whileHover={{ opacity: 1 }}
+                      >
+                        <motion.button
+                          whileHover={{ scale: 1.1 }}
+                          whileTap={{ scale: 0.9 }}
+                          className="view-btn"
+                          style={{
+                            background: colors.primary,
+                            color: '#ffffff',
+                            border: 'none',
+                            padding: '12px 25px',
+                            borderRadius: '50px',
+                            fontWeight: 600,
+                            cursor: 'pointer',
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            fontSize: '0.9rem'
+                          }}
+                        >
+                          <FiExternalLink className="me-2" /> View Project
+                        </motion.button>
+                      </motion.div>
+                    </div>
+                    <div className="project-info" style={{ padding: '20px', flex: 1 }}>
+                      <h3 style={{ 
+                        fontSize: '1.4rem',
+                        marginBottom: '10px',
+                        color: colors.textPrimary,
+                        fontFamily: "'Poppins', sans-serif"
+                      }}>
+                        {proj.title}
+                      </h3>
+                      <p style={{ 
+                        marginBottom: '15px',
+                        color: colors.textPrimary,
+                        fontSize: '0.95rem',
+                        lineHeight: 1.5
+                      }}>
+                        {proj.description}
+                      </p>
+                      <div style={{
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        alignItems: 'center'
+                      }}>
+                        <div className="project-tags" style={{
+                          display: 'flex',
+                          flexWrap: 'wrap',
+                          gap: '8px',
+                          flex: 1
+                        }}>
+                          {proj.tags.map((tag, i) => (
+                            <motion.span 
+                              key={i}
+                              whileHover={{ y: -2 }}
+                              style={{
+                                backgroundColor: colors.primary + '20',
+                                color: colors.primary,
+                                padding: '5px 10px',
+                                borderRadius: '50px',
+                                fontSize: '0.75rem',
+                                fontWeight: 500
+                              }}
+                            >
+                              {tag}
+                            </motion.span>
+                          ))}
+                        </div>
+                        {proj.github && (
+                          <motion.a
+                            href={proj.github}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            whileHover={{ scale: 1.1 }}
+                            whileTap={{ scale: 0.9 }}
+                            style={{
+                              color: colors.textPrimary,
+                              fontSize: '1.5rem',
+                              marginLeft: '15px'
+                            }}
+                          >
+                            <FiGithub />
+                          </motion.a>
+                        )}
+                      </div>
+                    </div>
+                  </motion.div>
+                );
+              })}
+            </div>
+          );
+        })}
+      </div>
+
+      <div className="text-center mt-5">
+        <motion.button
+          whileHover={{ 
+            scale: 1.05, 
+            boxShadow: `0 5px 15px ${colors.primary}40`
+          }}
+          whileTap={{ scale: 0.95 }}
+          className="btn-primary"
+          style={{
+            background: `linear-gradient(135deg, ${colors.primary}, ${colors.secondary})`,
+            color: '#ffffff',
+            border: 'none',
+            padding: '15px 30px',
+            borderRadius: '50px',
+            fontWeight: 600,
+            cursor: 'pointer',
+            display: 'inline-flex',
+            alignItems: 'center',
+            fontSize: '1rem',
+            boxShadow: `0 5px 15px ${colors.primary}30`
+          }}
+        >
+          View All Projects
+        </motion.button>
+      </div>
+    </motion.div>
+  </Container>
+</section>
+
+
+      {/* Testimonials Section */}
       <section 
-        id="work" 
-        className="section work-section"
+        id="testimonials" 
+        className="section testimonials-section"
         style={{
           padding: '100px 0',
           position: 'relative',
-          backgroundColor: getSectionBackground(5),
+          backgroundColor: getSectionBackground(6),
           color: colors.textPrimary
         }}
       >
         <Container>
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.8 }}
-          >
-            <h2 className="section-title">My Work</h2>
-            <div className="section-divider"></div>
-            <div className="project-filter">
-              {['All', 'Web', 'Mobile', 'Design', 'Full Stack'].map((filter, index) => (
-                <motion.button
-                  key={index}
-                  whileHover={{ scale: 1.05, backgroundColor: "var(--primary-color)", color: "white" }}
-                  whileTap={{ scale: 0.95 }}
-                  className="filter-btn"
-                >
-                  {filter}
-                </motion.button>
-              ))}
-            </div>
-            <div className="project-grid">
-              {projects.map((project, index) => (
-                <motion.div
-                  key={project.id}
-                  className={`project-card ${project.width === 'wide' ? 'wide' : 'narrow'}`}
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  whileHover={{ y: -10, boxShadow: "0 15px 30px rgba(0, 0, 0, 0.15)" }}
-                >
-                  <div className="project-image">
-                    <img src={project.image} alt={project.title} />
-                    <div className="project-overlay">
-                      <motion.button
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.9 }}
-                        className="view-btn"
-                      >
-                        <FiExternalLink className="me-2" /> View Project
-                      </motion.button>
-                    </div>
-                  </div>
-                  <div className="project-info">
-                    <h3>{project.title}</h3>
-                    <p>{project.description}</p>
-                    <div className="project-tags">
-                      {project.tags.map((tag, i) => (
-                        <motion.span 
-                          key={i}
-                          whileHover={{ y: -2 }}
-                        >
-                          {tag}
-                        </motion.span>
-                      ))}
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-            <div className="text-center mt-5">
-              <motion.button
-                whileHover={{ scale: 1.05, boxShadow: "0 5px 15px rgba(108, 99, 255, 0.4)" }}
-                whileTap={{ scale: 0.95 }}
-                className="btn-primary"
-              >
-                View All Projects
-              </motion.button>
-            </div>
-          </motion.div>
-        </Container>
-      </section>
-
-      {/* Testimonials Section (Primary BG) */}
-      <section 
-        id="testimonials" 
-        className="section testimonials-section"
-       style={{
-          padding: '100px 0',
-          position: 'relative',
-          backgroundColor: getSectionBackground(5),
-          color: colors.textPrimary
-        }}
-      >
- <Container>
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -1144,9 +1610,9 @@ const Portfolio = () => {
               style={{
                 fontSize: 'clamp(2rem, 5vw, 2.8rem)',
                 fontWeight: 700,
-                marginBottom: '25px',
-                color: colors.text,
-                fontFamily: "'Orbitron', sans-serif",
+                marginBottom: '60px',
+                color: colors.textPrimary,
+                fontFamily: "'Poppins', sans-serif",
                 position: 'relative',
                 display: 'inline-block'
               }}
@@ -1154,9 +1620,8 @@ const Portfolio = () => {
               Client Testimonials
               <motion.div 
                 style={{
-                  content: '',
                   position: 'absolute',
-                  bottom: '-10px',
+                  bottom: '-15px',
                   left: '50%',
                   transform: 'translateX(-50%)',
                   width: '80px',
@@ -1190,13 +1655,12 @@ const Portfolio = () => {
                         boxShadow: "0 15px 30px rgba(0, 0, 0, 0.1)"
                       }}
                       style={{
-                        backgroundColor: colors.light,
+                        backgroundColor: isDarkMode ? 'rgba(10, 25, 47, 0.5)' : 'rgba(248, 249, 250, 0.7)',
                         borderRadius: '20px',
                         padding: '40px',
                         boxShadow: '0 15px 40px rgba(0, 0, 0, 0.05)',
                         minWidth: '80%',
-                        scrollSnapAlign: 'start',
-                        transition: 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)'
+                        scrollSnapAlign: 'start'
                       }}
                     >
                       <div 
@@ -1233,15 +1697,16 @@ const Portfolio = () => {
                           <h4 style={{ 
                             fontSize: '1.4rem', 
                             marginBottom: '5px',
-                            color: colors.dark,
-                            fontFamily: "'Orbitron', sans-serif"
+                            color: colors.textPrimary,
+                            fontFamily: "'Poppins', sans-serif"
                           }}>
                             {testimonial.name}
                           </h4>
                           <p style={{ 
                             fontSize: '1rem',
-                            color: colors.textDark,
-                            marginBottom: '10px'
+                            color: colors.textPrimary,
+                            marginBottom: '10px',
+                            opacity: 0.8
                           }}>
                             {testimonial.role}
                           </p>
@@ -1263,10 +1728,19 @@ const Portfolio = () => {
                             position: 'relative',
                             paddingLeft: '30px',
                             fontSize: '1.1rem',
-                            color: colors.dark
+                            color: colors.textPrimary
                           }}
                         >
-                          "{testimonial.content}"
+                          <span style={{
+                            position: 'absolute',
+                            left: 0,
+                            top: 0,
+                            fontSize: '3rem',
+                            lineHeight: 1,
+                            color: colors.primary,
+                            opacity: 0.2
+                          }}>"</span>
+                          {testimonial.content}
                         </p>
                       </div>
                     </motion.div>
@@ -1278,18 +1752,18 @@ const Portfolio = () => {
         </Container>
       </section>
 
-      {/* Blog Section (Secondary BG) */}
+      {/* Blog Section */}
       <section 
         id="blog" 
         className="section blog-section"
-       style={{
+        style={{
           padding: '100px 0',
           position: 'relative',
-          backgroundColor: getSectionBackground(5),
+          backgroundColor: getSectionBackground(7),
           color: colors.textPrimary
         }}
       >
-              <Container>
+        <Container>
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -1302,9 +1776,9 @@ const Portfolio = () => {
               style={{
                 fontSize: 'clamp(2rem, 5vw, 2.8rem)',
                 fontWeight: 700,
-                marginBottom: '25px',
-                color: colors.dark,
-                fontFamily: "'Orbitron', sans-serif",
+                marginBottom: '60px',
+                color: colors.textPrimary,
+                fontFamily: "'Poppins', sans-serif",
                 position: 'relative',
                 display: 'inline-block'
               }}
@@ -1312,9 +1786,8 @@ const Portfolio = () => {
               Latest Articles
               <motion.div 
                 style={{
-                  content: '',
                   position: 'absolute',
-                  bottom: '-10px',
+                  bottom: '-15px',
                   left: '50%',
                   transform: 'translateX(-50%)',
                   width: '80px',
@@ -1331,13 +1804,12 @@ const Portfolio = () => {
                   <motion.div
                     className="blog-card"
                     style={{
-                      backgroundColor: colors.light,
+                      backgroundColor: isDarkMode ? 'rgba(10, 25, 47, 0.5)' : 'rgba(248, 249, 250, 0.7)',
                       borderRadius: '20px',
                       overflow: 'hidden',
                       boxShadow: '0 10px 30px rgba(0, 0, 0, 0.05)',
                       marginBottom: '30px',
-                      height: '100%',
-                      transition: 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)'
+                      height: '100%'
                     }}
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -1373,7 +1845,7 @@ const Portfolio = () => {
                           top: '20px',
                           right: '20px',
                           background: `linear-gradient(135deg, ${colors.primary}, ${colors.secondary})`,
-                          color: colors.light,
+                          color: '#ffffff',
                           padding: '6px 18px',
                           borderRadius: '20px',
                           fontSize: '0.85rem',
@@ -1391,8 +1863,8 @@ const Portfolio = () => {
                       <h3 style={{ 
                         fontSize: '1.5rem', 
                         marginBottom: '15px',
-                        color: colors.dark,
-                        fontFamily: "'Orbitron', sans-serif"
+                        color: colors.textPrimary,
+                        fontFamily: "'Poppins', sans-serif"
                       }}>
                         {post.title}
                       </h3>
@@ -1400,10 +1872,11 @@ const Portfolio = () => {
                         className="blog-date"
                         style={{
                           fontSize: '0.95rem',
-                          color: colors.textDark,
+                          color: colors.textPrimary,
                           marginBottom: '20px',
                           display: 'flex',
-                          alignItems: 'center'
+                          alignItems: 'center',
+                          opacity: 0.8
                         }}
                       >
                         <span style={{
@@ -1420,7 +1893,7 @@ const Portfolio = () => {
                         style={{
                           marginBottom: '25px',
                           lineHeight: 1.8,
-                          color: colors.textDark
+                          color: colors.textPrimary
                         }}
                       >
                         {post.excerpt}
@@ -1438,8 +1911,7 @@ const Portfolio = () => {
                           display: 'inline-flex',
                           alignItems: 'center',
                           padding: 0,
-                          fontSize: '1rem',
-                          transition: 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)'
+                          fontSize: '1rem'
                         }}
                       >
                         Read More <FiExternalLink style={{ marginLeft: '8px' }} />
@@ -1453,13 +1925,13 @@ const Portfolio = () => {
               <motion.button
                 whileHover={{ 
                   scale: 1.05, 
-                  boxShadow: `0 10px 25px ${colors.primary}40`
+                  boxShadow: `0 5px 15px ${colors.primary}40`
                 }}
                 whileTap={{ scale: 0.95 }}
                 className="btn-primary"
                 style={{
                   background: `linear-gradient(135deg, ${colors.primary}, ${colors.secondary})`,
-                  color: colors.light,
+                  color: '#ffffff',
                   border: 'none',
                   padding: '15px 30px',
                   borderRadius: '50px',
@@ -1478,18 +1950,85 @@ const Portfolio = () => {
         </Container>
       </section>
 
-      {/* Contact Section (Primary BG) */}
+      {/* Stats Section */}
+      <section 
+        className="section stats-section"
+        style={{
+          background: `linear-gradient(135deg, ${colors.primary} 0%, ${colors.secondary} 100%)`,
+          color: '#ffffff',
+          padding: '100px 0',
+          position: 'relative',
+          overflow: 'hidden'
+        }}
+      >
+        <Container>
+          <Row>
+            {stats.map((stat, index) => (
+              <Col md={3} sm={6} key={index} className="mb-4">
+                <motion.div
+                  className="stat-card"
+                  style={{
+                    textAlign: 'center',
+                    padding: '40px 20px',
+                    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                    borderRadius: '20px',
+                    backdropFilter: 'blur(5px)',
+                    marginBottom: '20px',
+                    border: '1px solid rgba(255, 255, 255, 0.2)'
+                  }}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  whileHover={{ 
+                    y: -5, 
+                    backgroundColor: 'rgba(255, 255, 255, 0.2)'
+                  }}
+                >
+                  <motion.div 
+                    className="stat-number"
+                    style={{
+                      fontSize: 'clamp(2rem, 5vw, 3.5rem)',
+                      fontWeight: 700,
+                      marginBottom: '15px',
+                      fontFamily: "'Poppins', sans-serif",
+                      position: 'relative'
+                    }}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ delay: index * 0.1 + 0.3 }}
+                  >
+                    {stat.number}
+                  </motion.div>
+                  <div 
+                    className="stat-label"
+                    style={{
+                      fontSize: '1.2rem',
+                      opacity: 0.9,
+                      fontWeight: 500
+                    }}
+                  >
+                    {stat.label}
+                  </div>
+                </motion.div>
+              </Col>
+            ))}
+          </Row>
+        </Container>
+      </section>
+
+      {/* Contact Section */}
       <section 
         id="contact" 
         className="section contact-section"
         style={{
           padding: '100px 0',
           position: 'relative',
-          backgroundColor: getSectionBackground(5),
+          backgroundColor: getSectionBackground(8),
           color: colors.textPrimary
         }}
       >
-                <Container>
+        <Container>
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -1502,9 +2041,9 @@ const Portfolio = () => {
               style={{
                 fontSize: 'clamp(2rem, 5vw, 2.8rem)',
                 fontWeight: 700,
-                marginBottom: '25px',
-                color: colors.dark,
-                fontFamily: "'Orbitron', sans-serif",
+                marginBottom: '60px',
+                color: colors.textPrimary,
+                fontFamily: "'Poppins', sans-serif",
                 position: 'relative',
                 display: 'inline-block'
               }}
@@ -1512,9 +2051,8 @@ const Portfolio = () => {
               Get In Touch
               <motion.div 
                 style={{
-                  content: '',
                   position: 'absolute',
-                  bottom: '-10px',
+                  bottom: '-15px',
                   left: '50%',
                   transform: 'translateX(-50%)',
                   width: '80px',
@@ -1526,7 +2064,7 @@ const Portfolio = () => {
               />
             </h2>
             
-            {/* Basic Contact Information (Horizontally Aligned) */}
+            {/* Contact Info */}
             <Row className="text-center mb-5">
               <Col md={4} sm={12} className="mb-4">
                 <motion.div
@@ -1535,8 +2073,12 @@ const Portfolio = () => {
                   transition={{ duration: 1 }}
                 >
                   <FaMapMarker size={30} color={colors.primary} />
-                  <h3 style={{ color: colors.primary }}>Location</h3>
-                  <p style={{ color: colors.textDark }}>Addis Ababa, Ethiopia</p>
+                  <h3 style={{ 
+                    color: colors.primary,
+                    fontFamily: "'Poppins', sans-serif",
+                    margin: '15px 0'
+                  }}>Location</h3>
+                  <p style={{ color: colors.textPrimary }}>Addis Ababa, Ethiopia</p>
                 </motion.div>
               </Col>
               <Col md={4} sm={12} className="mb-4">
@@ -1546,8 +2088,12 @@ const Portfolio = () => {
                   transition={{ duration: 1 }}
                 >
                   <FaPhone size={30} color={colors.primary} />
-                  <h3 style={{ color: colors.primary }}>Phone</h3>
-                  <p style={{ color: colors.textDark }}>+251 9 12 43 65 73</p>
+                  <h3 style={{ 
+                    color: colors.primary,
+                    fontFamily: "'Poppins', sans-serif",
+                    margin: '15px 0'
+                  }}>Phone</h3>
+                  <p style={{ color: colors.textPrimary }}>+251 9 12 43 65 73</p>
                 </motion.div>
               </Col>
               <Col md={4} sm={12} className="mb-4">
@@ -1557,15 +2103,18 @@ const Portfolio = () => {
                   transition={{ duration: 1 }}
                 >
                   <FiMail size={30} color={colors.primary} />
-                  <h3 style={{ color: colors.primary }}>Email</h3>
-                  <p style={{ color: colors.textDark }}>contact@amlakie.com</p>
+                  <h3 style={{ 
+                    color: colors.primary,
+                    fontFamily: "'Poppins', sans-serif",
+                    margin: '15px 0'
+                  }}>Email</h3>
+                  <p style={{ color: colors.textPrimary }}>contact@amlakie.com</p>
                 </motion.div>
               </Col>
             </Row>
 
-            {/* Two Columns: Map and Contact Form */}
+            {/* Contact Form */}
             <Row>
-              {/* Left Column: Map */}
               <Col md={6} className="mb-5 mb-md-0">
                 <motion.div
                   initial={{ x: -100, opacity: 0 }}
@@ -1583,7 +2132,6 @@ const Portfolio = () => {
                 </motion.div>
               </Col>
 
-              {/* Right Column: Contact Form */}
               <Col md={6}>
                 <motion.div
                   initial={{ x: 100, opacity: 0 }}
@@ -1593,7 +2141,7 @@ const Portfolio = () => {
                   <div 
                     className="contact-form"
                     style={{
-                      backgroundColor: colors.light,
+                      backgroundColor: isDarkMode ? 'rgba(10, 25, 47, 0.5)' : 'rgba(248, 249, 250, 0.7)',
                       padding: '40px',
                       borderRadius: '20px',
                       boxShadow: '0 15px 40px rgba(0, 0, 0, 0.05)'
@@ -1603,7 +2151,7 @@ const Portfolio = () => {
                       color: colors.primary,
                       fontSize: '2rem',
                       marginBottom: '25px',
-                      fontFamily: "'Orbitron', sans-serif"
+                      fontFamily: "'Poppins', sans-serif"
                     }}>
                       Send Me a Message
                     </h3>
@@ -1624,10 +2172,9 @@ const Portfolio = () => {
                                 border: `1px solid ${colors.primary}`,
                                 borderRadius: '10px',
                                 fontFamily: 'inherit',
-                                transition: 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
                                 fontSize: '1rem',
-                                backgroundColor: isDarkMode ? '#0a192f' : '#f8f9fa',
-                                color: colors.text
+                                backgroundColor: 'transparent',
+                                color: colors.textPrimary
                               }}
                             />
                           </div>
@@ -1647,10 +2194,9 @@ const Portfolio = () => {
                                 border: `1px solid ${colors.primary}`,
                                 borderRadius: '10px',
                                 fontFamily: 'inherit',
-                                transition: 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
                                 fontSize: '1rem',
-                                backgroundColor: isDarkMode ? '#0a192f' : '#f8f9fa',
-                                color: colors.text
+                                backgroundColor: 'transparent',
+                                color: colors.textPrimary
                               }}
                             />
                           </div>
@@ -1670,10 +2216,9 @@ const Portfolio = () => {
                             border: `1px solid ${colors.primary}`,
                             borderRadius: '10px',
                             fontFamily: 'inherit',
-                            transition: 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
                             fontSize: '1rem',
-                            backgroundColor: isDarkMode ? '#0a192f' : '#f8f9fa',
-                            color: colors.text
+                            backgroundColor: 'transparent',
+                            color: colors.textPrimary
                           }}
                         />
                       </div>
@@ -1691,11 +2236,10 @@ const Portfolio = () => {
                             border: `1px solid ${colors.primary}`,
                             borderRadius: '10px',
                             fontFamily: 'inherit',
-                            transition: 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
                             fontSize: '1rem',
                             resize: 'none',
-                            backgroundColor: isDarkMode ? '#0a192f' : '#f8f9fa',
-                            color: colors.text
+                            backgroundColor: 'transparent',
+                            color: colors.textPrimary
                           }}
                         ></textarea>
                       </div>
@@ -1708,7 +2252,7 @@ const Portfolio = () => {
                         type="submit"
                         style={{
                           background: `linear-gradient(135deg, ${colors.primary}, ${colors.secondary})`,
-                          color: colors.light,
+                          color: '#ffffff',
                           border: 'none',
                           padding: '15px 30px',
                           borderRadius: '50px',
@@ -1733,102 +2277,255 @@ const Portfolio = () => {
         </Container>
       </section>
 
-      {/* Footer */}
-      <footer 
-        className="footer"
-        style={{
-          backgroundColor: colors.bgPrimary,
-          color: colors.textPrimary,
-          padding: '60px 0 30px',
-          textAlign: 'center',
-          position: 'relative',
-          borderTop: `1px solid ${colors.border}`
-        }}
-      >
-                <Container>
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="footer-content"
-          >
-            <div 
-              className="social-links"
-              style={{
-                display: 'flex',
-                justifyContent: 'center',
-                gap: '25px',
-                marginBottom: '40px'
-              }}
-            >
-              {[
-                { icon: <FiGithub />, url: "#" },
-                { icon: <FiLinkedin />, url: "#" },
-                { icon: <FiMail />, url: "#" }
-              ].map((social, index) => (
-                <motion.a
-                  key={index}
-                  href={social.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  whileHover={{ 
-                    y: -5, 
-                    color: colors.primary,
-                    backgroundColor: 'rgba(255, 255, 255, 0.2)'
-                  }}
-                  whileTap={{ scale: 0.9 }}
-                  style={{
-                    color: colors.light,
-                    fontSize: '1.8rem',
-                    transition: 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
-                    width: '60px',
-                    height: '60px',
-                    borderRadius: '50%',
+{/* Footer */}
+<footer 
+  className="footer"
+  style={{
+    backgroundColor: colors.bgPrimary,
+    color: colors.textPrimary,
+    padding: '60px 0',
+    textAlign: 'center',
+    borderTop: `1px solid ${colors.border}`
+  }}
+>
+  <Container>
+    <motion.div
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6 }}
+    >
+      <div style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+        gap: '40px',
+        marginBottom: '50px',
+        textAlign: 'left'
+      }}>
+        {/* About Section */}
+        <div className="box">
+          <h3 style={{ marginBottom: '15px', fontSize: '1.5rem' }}>Amlakie's Portfolio</h3>
+          <p style={{ opacity: 0.8, lineHeight: 1.6 }}>
+            Thank you for visiting my personal portfolio website. Connect with me over socials. <br/><br/> Keep Rising 🚀. Connect with me over live chat!
+          </p>
+        </div>
+
+        {/* Quick Links */}
+        <div className="box">
+          <h3 style={{ marginBottom: '15px', fontSize: '1.2rem' }}>Quick Links</h3>
+          <ul style={{ listStyle: 'none', paddingLeft: 0 }}>
+            {[
+              { title: "Home", id: "home" },
+              { title: "About", id: "about" },
+              { title: "Skills", id: "skills" },
+              { title: "Education", id: "education" },
+              { title: "Work", id: "work" },
+              { title: "Experience", id: "experience" }
+            ].map((link, index) => (
+              <li key={index} style={{ marginBottom: '10px' }}>
+                <a 
+                  href={`#${link.id}`} 
+                  style={{ 
+                    color: colors.textPrimary,
+                    textDecoration: 'none',
                     display: 'flex',
                     alignItems: 'center',
-                    justifyContent: 'center',
-                    backgroundColor: 'rgba(255, 255, 255, 0.1)'
+                    gap: '8px',
+                    fontWeight: 500
                   }}
                 >
-                  {social.icon}
-                </motion.a>
-              ))}
-            </div>
-            <p style={{ 
-              marginBottom: 0,
-              fontSize: '1rem',
-              opacity: 0.8
-            }}>
-              © {new Date().getFullYear()} Amlakie. All rights reserved.
-            </p>
-            <motion.button
-              whileHover={{ 
-                scale: 1.05, 
-                boxShadow: `0 5px 15px ${colors.primary}30`
-              }}
-              whileTap={{ scale: 0.95 }}
-              className="btn-outline btn-sm mt-3"
-              onClick={() => scrollToSection('home')}
+                  <i className="fas fa-chevron-circle-right"></i> {link.title}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* Contact Info */}
+        <div className="box">
+          <h3 style={{ marginBottom: '15px', fontSize: '1.2rem' }}>Contact Info</h3>
+          <p style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '10px', opacity: 0.9 }}>
+            <i className="fas fa-phone" style={{ fontSize: '1.1rem' }}></i>+251 9 12 43 55 73
+          </p>
+          <p style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '10px', opacity: 0.9 }}>
+            <i className="fas fa-envelope" style={{ fontSize: '1.1rem' }}></i>amlakieab4@gmail.com
+          </p>
+          <p style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '20px', opacity: 0.9 }}>
+            <i className="fas fa-map-marked-alt" style={{ fontSize: '1.1rem' }}></i>Adiss Abeba, Ethiopia
+          </p>
+
+          {/* Social Media Icons */}
+          <div style={{
+            display: 'flex',
+            gap: '15px',
+            justifyContent: 'flex-start',
+            flexWrap: 'wrap'
+          }}>
+            <a 
+              href="https://www.linkedin.com/in/Amlakie " 
+              target="_blank" 
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
               style={{
-                backgroundColor: 'transparent',
-                color: colors.primary,
-                border: `2px solid ${colors.primary}`,
-                padding: '8px 20px',
-                borderRadius: '50px',
-                fontWeight: 600,
-                cursor: 'pointer',
-                display: 'inline-flex',
+                fontSize: '1.5rem',
+                color: colors.textPrimary,
+                width: '45px',
+                height: '45px',
+                borderRadius: '50%',
+                display: 'flex',
                 alignItems: 'center',
-                fontSize: '0.9rem',
-                marginTop: '20px'
+                justifyContent: 'center',
+                backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                transition: 'all 0.3s ease',
+                textDecoration: 'none'
               }}
+              onMouseOver={(e) => e.currentTarget.style.backgroundColor = colors.primary}
+              onMouseOut={(e) => e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)'}
             >
-              Back to Top
-            </motion.button>
-          </motion.div>
-        </Container>
-      </footer>
+              <i className="fab fa-linkedin-in"></i>
+            </a>
+            <a 
+              href="https://github.com/Amlakab " 
+              target="_blank" 
+              rel="noopener noreferrer"
+              aria-label="GitHub"
+              style={{
+                fontSize: '1.5rem',
+                color: colors.textPrimary,
+                width: '45px',
+                height: '45px',
+                borderRadius: '50%',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                transition: 'all 0.3s ease',
+                textDecoration: 'none'
+              }}
+              onMouseOver={(e) => e.currentTarget.style.backgroundColor = colors.primary}
+              onMouseOut={(e) => e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)'}
+            >
+              <i className="fab fa-github"></i>
+            </a>
+            <a 
+              href="mailto:amlakieab4@gmail.com" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              aria-label="Email"
+              style={{
+                fontSize: '1.5rem',
+                color: colors.textPrimary,
+                width: '45px',
+                height: '45px',
+                borderRadius: '50%',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                transition: 'all 0.3s ease',
+                textDecoration: 'none'
+              }}
+              onMouseOver={(e) => e.currentTarget.style.backgroundColor = colors.primary}
+              onMouseOut={(e) => e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)'}
+            >
+              <i className="fas fa-envelope"></i>
+            </a>
+            <a 
+              href="https://twitter.com/amlakie " 
+              target="_blank" 
+              rel="noopener noreferrer"
+              aria-label="Twitter"
+              style={{
+                fontSize: '1.5rem',
+                color: colors.textPrimary,
+                width: '45px',
+                height: '45px',
+                borderRadius: '50%',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                transition: 'all 0.3s ease',
+                textDecoration: 'none'
+              }}
+              onMouseOver={(e) => e.currentTarget.style.backgroundColor = colors.primary}
+              onMouseOut={(e) => e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)'}
+            >
+              <i className="fab fa-twitter"></i>
+            </a>
+            <a 
+              href="https://t.me/amlak1221 " 
+              target="_blank" 
+              rel="noopener noreferrer"
+              aria-label="Telegram"
+              style={{
+                fontSize: '1.5rem',
+                color: colors.textPrimary,
+                width: '45px',
+                height: '45px',
+                borderRadius: '50%',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                transition: 'all 0.3s ease',
+                textDecoration: 'none'
+              }}
+              onMouseOver={(e) => e.currentTarget.style.backgroundColor = colors.primary}
+              onMouseOut={(e) => e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)'}
+            >
+              <i className="fab fa-telegram-plane"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      {/* Credit Line */}
+      <p style={{ 
+        fontSize: '1rem',
+        opacity: 0.7,
+        marginBottom: '30px'
+      }}>
+        Designed with <i className="fa fa-heart pulse" style={{ color: '#ff4d4d', margin: '0 5px' }}></i> by{' '}
+        <a 
+          href="https://www.linkedin.com/in/Amlakie " 
+          target="_blank" 
+          rel="noopener noreferrer"
+          style={{
+            color: colors.primary,
+            fontWeight: 600,
+            textDecoration: 'none'
+          }}
+        >
+          Amlakie Abebaw
+        </a>
+      </p>
+
+      {/* Back to Top Button */}
+      <motion.button
+        whileHover={{ scale: 1.05, boxShadow: `0 5px 15px ${colors.primary}30` }}
+        whileTap={{ scale: 0.95 }}
+        className="btn-outline btn-sm mt-3"
+        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        style={{
+          backgroundColor: 'transparent',
+          color: colors.primary,
+          border: `2px solid ${colors.primary}`,
+          padding: '10px 25px',
+          borderRadius: '50px',
+          fontWeight: 600,
+          cursor: 'pointer',
+          display: 'inline-flex',
+          alignItems: 'center',
+          fontSize: '0.95rem',
+          transition: 'all 0.3s ease'
+        }}
+      >
+        Back to Top
+      </motion.button>
+    </motion.div>
+  </Container>
+</footer>
     </div>
   );
 };
