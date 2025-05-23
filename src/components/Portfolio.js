@@ -700,7 +700,7 @@ const backendSkills = [
                     overflow: 'hidden',
                     boxShadow: '0 20px 40px rgba(0, 0, 0, 0.1)',
                     margin: '0 auto',
-                    border: `5px solid ${colors.primary}`
+                    border: `2px solid ${colors.primary}`
                   }}
                 >
                   <img 
