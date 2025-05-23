@@ -15,20 +15,21 @@ const Portfolio = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
 
-  // Enhanced color scheme with proper contrast
+  // Enhanced color scheme with better contrast and professional palette
   const colors = isDarkMode ? {
     // Dark theme colors
     primary: '#00f0ff',       // Vibrant cyan
     secondary: '#6c63ff',     // Soft purple
     accent: '#ff2d75',        // Pink accent
     
-    // Background colors
-    bgPrimary: '#0a192f',     // Dark navy
-    bgSecondary: '#112240',   // Slightly lighter navy
+    // Background colors (two alternating shades)
+    bgPrimary: '#0a192f',     // Dark navy (hero, skills, etc.)
+    bgSecondary: '#112240',   // Slightly lighter navy (about, experience, etc.)
     
     // Text colors
-    textPrimary: '#e6f1ff',   // Bright white-blue
-    textSecondary: '#ccd6f6', // Softer white-blue
+    textPrimary: '#ccd6f6',   // Light blue (main text)
+    textSecondary: '#8892b0', // Lighter text (secondary)
+    textDark: '#1a1a2e',      // For light backgrounds in dark mode
     
     // UI elements
     border: 'rgba(100, 255, 255, 0.1)',
@@ -39,13 +40,14 @@ const Portfolio = () => {
     secondary: '#4f46e5',     // Indigo
     accent: '#f59e0b',        // Amber accent
     
-    // Background colors
-    bgPrimary: '#f8fafc',     // Very light gray
-    bgSecondary: '#ffffff',   // Pure white
+    // Background colors (two alternating shades)
+    bgPrimary: '#f8fafc',     // Very light gray (hero, skills, etc.)
+    bgSecondary: '#ffffff',   // Pure white (about, experience, etc.)
     
     // Text colors
-    textPrimary: '#1e293b',   // Dark slate
-    textSecondary: '#475569', // Grayish text
+    textPrimary: '#1e293b',   // Dark slate (main text)
+    textSecondary: '#475569', // Grayish text (secondary)
+    textDark: '#1a1a2e',      // For dark text on light bg
     
     // UI elements
     border: 'rgba(30, 41, 59, 0.1)',
@@ -55,6 +57,10 @@ const Portfolio = () => {
   // Section background alternator
   const getSectionBackground = (sectionIndex) => {
     return sectionIndex % 2 === 0 ? colors.bgPrimary : colors.bgSecondary;
+  };
+
+  const getSectionTextColor = (sectionIndex) => {
+    return sectionIndex % 2 === 0 ? colors.textPrimary : colors.textPrimary;
   };
 
   const names = ["Amlakie", "Developer", "Designer", "Creator"];
@@ -91,7 +97,7 @@ const Portfolio = () => {
     element?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  // Sample data
+  // Sample project data
   const projects = [
     {
       id: 1,
@@ -108,24 +114,70 @@ const Portfolio = () => {
       tags: ["React", "Python", "PostgreSQL"],
       image: "/images/transport-system.png",
       width: "narrow"
+    },
+    {
+      id: 3,
+      title: "Scientific Calculator",
+      description: "Advanced calculator with 3D graphing capabilities",
+      tags: ["JavaScript", "WebGL", "MathJS"],
+      image: "/images/calculator.png",
+      width: "narrow"
+    },
+    {
+      id: 4,
+      title: "INSA Website",
+      description: "Interactive institutional portal with virtual campus tour",
+      tags: ["React", "Three.js", "Firebase"],
+      image: "/images/insa-website.png",
+      width: "narrow"
+    },
+    {
+      id: 5,
+      title: "E-commerce Platform",
+      description: "Amazon-like shopping with AR product preview",
+      tags: ["React", "Node.js", "AR.js"],
+      image: "/images/ecommerce.png",
+      width: "narrow"
+    },
+    {
+      id: 6,
+      title: "Portfolio Template",
+      description: "Customizable 3D portfolio with interactive elements",
+      tags: ["React", "Framer Motion", "Three.js"],
+      image: "/images/portfolio-template.png",
+      width: "wide"
     }
   ];
 
+  // Experience data
   const experiences = [
     {
       role: "Full Stack Developer",
       company: "Tech Solutions Inc.",
       period: "2021 - Present",
-      description: "Developed AI-powered web applications using modern JavaScript frameworks."
+      description: "Developed AI-powered web applications using modern JavaScript frameworks and implemented responsive UIs with micro-interactions."
+    },
+    {
+      role: "Frontend Architect",
+      company: "Digital Creations",
+      period: "2019 - 2021",
+      description: "Led frontend teams to create immersive web experiences with animations and 3D elements."
     }
   ];
 
+  // Education data
   const education = [
     {
       degree: "Master in Computer Science",
       institution: "University of Technology",
       year: "2018 - 2020",
       description: "Specialized in Human-Computer Interaction and Advanced Web Technologies"
+    },
+    {
+      degree: "Bachelor in Software Engineering",
+      institution: "State University",
+      year: "2014 - 2018",
+      description: "Focused on Full Stack Development and User Experience Design"
     }
   ];
 
@@ -134,8 +186,16 @@ const Portfolio = () => {
       id: 1,
       name: "Sarah Johnson",
       role: "CEO, TechCorp",
-      content: "Amlakie delivered our project ahead of schedule with exceptional quality.",
+      content: "Amlakie delivered our project ahead of schedule with exceptional quality. His attention to detail and problem-solving skills are remarkable.",
       avatar: "/images/testimonial1.png",
+      rating: 5
+    },
+    {
+      id: 2,
+      name: "Michael Chen",
+      role: "CTO, InnovateX",
+      content: "Working with Amlakie was a pleasure. He transformed our complex requirements into a beautiful, functional application with stunning animations.",
+      avatar: "/images/testimonial2.png",
       rating: 5
     }
   ];
@@ -144,21 +204,37 @@ const Portfolio = () => {
     {
       id: 1,
       title: "Building Scalable React Applications",
-      excerpt: "Learn the best practices for creating React apps that can grow with your user base.",
+      excerpt: "Learn the best practices for creating React apps that can grow with your user base while maintaining performance.",
       date: "May 15, 2023",
       image: "/images/blog1.png",
       category: "React"
+    },
+    {
+      id: 2,
+      title: "The Future of Web Development",
+      excerpt: "Exploring emerging technologies that will shape the next decade of web development including Web3 and AI integration.",
+      date: "April 28, 2023",
+      image: "/images/blog2.png",
+      category: "Web"
     }
   ];
 
   const stats = [
     { number: "25+", label: "Projects Completed" },
-    { number: "15", label: "Happy Clients" }
+    { number: "15", label: "Happy Clients" },
+    { number: "50K+", label: "Lines of Code" },
+    { number: "3", label: "Years Experience" }
   ];
 
-  const skills = [
+    const skills = [
     { name: "React", value: 95, icon: <FaReact /> },
-    { name: "Node.js", value: 90, icon: <FaNodeJs /> }
+    { name: "Node.js", value: 90, icon: <FaNodeJs /> },
+    { name: "TypeScript", value: 85, icon: <SiTypescript /> },
+    { name: "Python", value: 80, icon: <FaPython /> },
+    { name: "MongoDB", value: 75, icon: <SiMongodb /> },
+    { name: "PostgreSQL", value: 70, icon: <SiPostgresql /> },
+    { name: "Java", value: 65, icon: <FaJava /> },
+    { name: "Framer Motion", value: 85, icon: <SiFramer /> }
   ];
 
   // Animation variants
@@ -177,7 +253,7 @@ const Portfolio = () => {
     visible: { opacity: 1, x: 0 }
   };
 
-  // Section order
+  // Section order for background alternation
   const sections = [
     'home', 'about', 'skills', 'experience', 'education', 'work', 
     'testimonials', 'blog', 'contact'
@@ -219,8 +295,7 @@ const Portfolio = () => {
       {/* Navigation */}
       <Navbar expand="lg" fixed="top" className="portfolio-nav" style={{ 
         backgroundColor: isDarkMode ? 'rgba(10, 25, 47, 0.9)' : 'rgba(248, 249, 250, 0.9)',
-        backdropFilter: 'blur(10px)',
-        color: colors.textPrimary
+        backdropFilter: 'blur(10px)'
       }}>
         <Container>
           <motion.div
@@ -297,7 +372,7 @@ const Portfolio = () => {
         </Container>
       </Navbar>
 
-      {/* Hero Section */}
+      {/* Hero Section (Primary BG) */}
       <section 
         id="home" 
         className="hero-section"
@@ -308,11 +383,11 @@ const Portfolio = () => {
           position: 'relative',
           overflow: 'hidden',
           backgroundColor: getSectionBackground(0),
-          color: colors.textPrimary,
+          color: getSectionTextColor(0),
           padding: '100px 0'
         }}
       >
-        <Container>
+                <Container>
           <Row className="align-items-center">
             <Col lg={6} md={12} className="order-md-1 order-2">
               <motion.div
@@ -327,8 +402,8 @@ const Portfolio = () => {
                     fontWeight: 700,
                     marginBottom: '20px',
                     lineHeight: 1.2,
-                    fontFamily: "'Poppins', sans-serif",
-                    color: colors.textPrimary
+                    fontFamily: "'Orbitron', sans-serif",
+                    color: colors.text
                   }}
                 >
                   Hi, I'm <span style={{ color: colors.primary }}>{names[nameIndex]}</span>
@@ -344,8 +419,8 @@ const Portfolio = () => {
                     fontSize: 'clamp(1.5rem, 3vw, 2rem)',
                     fontWeight: 400,
                     marginBottom: '30px',
-                    color: colors.textPrimary,
-                    fontFamily: "'Poppins', sans-serif"
+                    color: colors.text,
+                    fontFamily: "'Orbitron', sans-serif"
                   }}
                 >
                   {names[nameIndex] === "Amlakie" ? "Full Stack Developer" : 
@@ -358,7 +433,7 @@ const Portfolio = () => {
                     fontSize: '1.1rem',
                     marginBottom: '40px',
                     maxWidth: '600px',
-                    color: colors.textPrimary
+                    color: colors.text
                   }}
                 >
                   I build exceptional digital experiences with modern web technologies, 
@@ -371,7 +446,7 @@ const Portfolio = () => {
                     className="btn-primary"
                     style={{
                       background: `linear-gradient(135deg, ${colors.primary}, ${colors.secondary})`,
-                      color: '#ffffff',
+                      color: colors.light,
                       border: 'none',
                       padding: '15px 30px',
                       borderRadius: '50px',
@@ -467,7 +542,7 @@ const Portfolio = () => {
         </Container>
       </section>
 
-      {/* About Section */}
+      {/* About Section (Secondary BG) */}
       <section 
         id="about" 
         className="section about-section"
@@ -475,10 +550,10 @@ const Portfolio = () => {
           padding: '100px 0',
           position: 'relative',
           backgroundColor: getSectionBackground(1),
-          color: colors.textPrimary
+          color: getSectionTextColor(1)
         }}
       >
-        <Container>
+                <Container>
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -491,9 +566,9 @@ const Portfolio = () => {
               style={{
                 fontSize: 'clamp(2rem, 5vw, 2.8rem)',
                 fontWeight: 700,
-                marginBottom: '60px',
-                color: colors.textPrimary,
-                fontFamily: "'Poppins', sans-serif",
+                marginBottom: '25px',
+                color: colors.dark,
+                fontFamily: "'Orbitron', sans-serif",
                 position: 'relative',
                 display: 'inline-block'
               }}
@@ -501,8 +576,9 @@ const Portfolio = () => {
               About Me
               <motion.div 
                 style={{
+                  content: '',
                   position: 'absolute',
-                  bottom: '-15px',
+                  bottom: '-10px',
                   left: '50%',
                   transform: 'translateX(-50%)',
                   width: '80px',
@@ -528,7 +604,7 @@ const Portfolio = () => {
                     overflow: 'hidden',
                     boxShadow: '0 20px 40px rgba(0, 0, 0, 0.1)',
                     margin: '0 auto',
-                    border: `5px solid ${colors.primary}`
+                    border: `5px solid ${colors.light}`
                   }}
                 >
                   <img 
@@ -549,8 +625,8 @@ const Portfolio = () => {
                   <h3 style={{ 
                     fontSize: 'clamp(1.5rem, 3vw, 2rem)', 
                     marginBottom: '25px', 
-                    color: colors.textPrimary,
-                    fontFamily: "'Poppins', sans-serif"
+                    color: colors.dark,
+                    fontFamily: "'Orbitron', sans-serif"
                   }}>
                     Who is Amlakie?
                   </h3>
@@ -558,7 +634,7 @@ const Portfolio = () => {
                     marginBottom: '20px', 
                     lineHeight: 1.8, 
                     fontSize: '1.1rem',
-                    color: colors.textPrimary
+                    color: colors.textDark
                   }}>
                     I'm a passionate full-stack developer with 5+ years of experience building cutting-edge web applications.
                     I specialize in JavaScript technologies across the whole stack with a focus on creating immersive user experiences.
@@ -567,7 +643,7 @@ const Portfolio = () => {
                     marginBottom: '20px', 
                     lineHeight: 1.8, 
                     fontSize: '1.1rem',
-                    color: colors.textPrimary
+                    color: colors.textDark
                   }}>
                     My approach combines technical expertise with creative problem-solving to deliver
                     high-quality, user-friendly applications that push the boundaries of modern web design.
@@ -587,7 +663,7 @@ const Portfolio = () => {
                       }}>
                         Name:
                       </span>
-                      <p style={{ margin: 0, fontWeight: 500, color: colors.textPrimary }}>Amlakie</p>
+                      <p style={{ margin: 0, fontWeight: 500 }}>Amlakie</p>
                     </div>
                     <div className="info-item" style={{ display: 'flex', alignItems: 'center' }}>
                       <span style={{ 
@@ -598,7 +674,7 @@ const Portfolio = () => {
                       }}>
                         Email:
                       </span>
-                      <p style={{ margin: 0, fontWeight: 500, color: colors.textPrimary }}>amlakie@example.com</p>
+                      <p style={{ margin: 0, fontWeight: 500 }}>amlakie@example.com</p>
                     </div>
                     <div className="info-item" style={{ display: 'flex', alignItems: 'center' }}>
                       <span style={{ 
@@ -609,7 +685,7 @@ const Portfolio = () => {
                       }}>
                         From:
                       </span>
-                      <p style={{ margin: 0, fontWeight: 500, color: colors.textPrimary }}>Addis Ababa, Ethiopia</p>
+                      <p style={{ margin: 0, fontWeight: 500 }}>Addis Ababa, Ethiopia</p>
                     </div>
                     <div className="info-item" style={{ display: 'flex', alignItems: 'center' }}>
                       <span style={{ 
@@ -620,7 +696,7 @@ const Portfolio = () => {
                       }}>
                         Focus:
                       </span>
-                      <p style={{ margin: 0, fontWeight: 500, color: colors.textPrimary }}>Interactive Web Experiences</p>
+                      <p style={{ margin: 0, fontWeight: 500 }}>Interactive Web Experiences</p>
                     </div>
                   </div>
                 </div>
@@ -630,7 +706,7 @@ const Portfolio = () => {
         </Container>
       </section>
 
-      {/* Skills Section */}
+      {/* Skills Section (Primary BG) */}
       <section 
         id="skills" 
         className="section skills-section"
@@ -638,10 +714,10 @@ const Portfolio = () => {
           padding: '100px 0',
           position: 'relative',
           backgroundColor: getSectionBackground(2),
-          color: colors.textPrimary
+          color: getSectionTextColor(2)
         }}
       >
-        <Container>
+                <Container>
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -654,9 +730,9 @@ const Portfolio = () => {
               style={{
                 fontSize: 'clamp(2rem, 5vw, 2.8rem)',
                 fontWeight: 700,
-                marginBottom: '60px',
-                color: colors.textPrimary,
-                fontFamily: "'Poppins', sans-serif",
+                marginBottom: '25px',
+                color: colors.text,
+                fontFamily: "'Orbitron', sans-serif",
                 position: 'relative',
                 display: 'inline-block'
               }}
@@ -664,8 +740,9 @@ const Portfolio = () => {
               My Skills
               <motion.div 
                 style={{
+                  content: '',
                   position: 'absolute',
-                  bottom: '-15px',
+                  bottom: '-10px',
                   left: '50%',
                   transform: 'translateX(-50%)',
                   width: '80px',
@@ -688,8 +765,8 @@ const Portfolio = () => {
                     <h3 style={{ 
                       fontSize: 'clamp(1.5rem, 3vw, 2rem)', 
                       marginBottom: '25px', 
-                      color: colors.textPrimary,
-                      fontFamily: "'Poppins', sans-serif"
+                      color: colors.text,
+                      fontFamily: "'Orbitron', sans-serif"
                     }}>
                       My technical expertise.
                     </h3>
@@ -697,7 +774,7 @@ const Portfolio = () => {
                       marginBottom: '30px', 
                       lineHeight: 1.8, 
                       fontSize: '1.1rem',
-                      color: colors.textPrimary
+                      color: colors.text
                     }}>
                       I've mastered a variety of technologies in the web development world,
                       from backend systems to interactive frontend experiences. My skills evolve
@@ -709,7 +786,7 @@ const Portfolio = () => {
                       className="btn-primary"
                       style={{
                         background: `linear-gradient(135deg, ${colors.primary}, ${colors.secondary})`,
-                        color: '#ffffff',
+                        color: colors.light,
                         border: 'none',
                         padding: '15px 30px',
                         borderRadius: '50px',
@@ -769,7 +846,7 @@ const Portfolio = () => {
                               fontWeight: 600, 
                               flexGrow: 1,
                               fontSize: '1.1rem',
-                              color: colors.textPrimary
+                              color: colors.text
                             }}
                           >
                             {skill.name}
@@ -823,7 +900,7 @@ const Portfolio = () => {
         </Container>
       </section>
 
-      {/* Experience Section */}
+      {/* Experience Section (Secondary BG) */}
       <section 
         id="experience" 
         className="section experience-section"
@@ -831,44 +908,18 @@ const Portfolio = () => {
           padding: '100px 0',
           position: 'relative',
           backgroundColor: getSectionBackground(3),
-          color: colors.textPrimary
+          color: getSectionTextColor(3)
         }}
       >
         <Container>
           <motion.div
-            initial="hidden"
-            whileInView="visible"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8 }}
-            variants={fadeInUp}
           >
-            <h2 
-              className="section-title text-center"
-              style={{
-                fontSize: 'clamp(2rem, 5vw, 2.8rem)',
-                fontWeight: 700,
-                marginBottom: '60px',
-                color: colors.textPrimary,
-                fontFamily: "'Poppins', sans-serif",
-                position: 'relative',
-                display: 'inline-block'
-              }}
-            >
-              My Experience
-              <motion.div 
-                style={{
-                  position: 'absolute',
-                  bottom: '-15px',
-                  left: '50%',
-                  transform: 'translateX(-50%)',
-                  width: '80px',
-                  height: '4px',
-                  background: `linear-gradient(90deg, ${colors.primary}, ${colors.secondary})`,
-                  borderRadius: '2px'
-                }}
-                layoutId="sectionDivider"
-              />
-            </h2>
+            <h2 className="section-title">My Experience</h2>
+            <div className="section-divider"></div>
             <div className="timeline">
               {experiences.map((exp, index) => (
                 <motion.div
@@ -882,45 +933,11 @@ const Portfolio = () => {
                   <motion.div
                     className="timeline-content"
                     whileHover={{ y: -5, boxShadow: "0 10px 25px rgba(0, 0, 0, 0.1)" }}
-                    style={{
-                      backgroundColor: isDarkMode ? 'rgba(10, 25, 47, 0.5)' : 'rgba(248, 249, 250, 0.7)',
-                      padding: '30px',
-                      borderRadius: '15px',
-                      borderLeft: `5px solid ${colors.primary}`,
-                      color: colors.textPrimary
-                    }}
                   >
-                    <h3 style={{ 
-                      fontSize: '1.5rem',
-                      color: colors.primary,
-                      marginBottom: '10px',
-                      fontFamily: "'Poppins', sans-serif"
-                    }}>
-                      {exp.role}
-                    </h3>
-                    <h4 style={{ 
-                      fontSize: '1.2rem',
-                      color: colors.textPrimary,
-                      marginBottom: '10px',
-                      fontWeight: 600
-                    }}>
-                      {exp.company}
-                    </h4>
-                    <span className="date" style={{ 
-                      display: 'block',
-                      marginBottom: '15px',
-                      color: colors.primary,
-                      fontWeight: 500
-                    }}>
-                      {exp.period}
-                    </span>
-                    <p style={{ 
-                      marginBottom: 0,
-                      lineHeight: 1.8,
-                      color: colors.textPrimary
-                    }}>
-                      {exp.description}
-                    </p>
+                    <h3>{exp.role}</h3>
+                    <h4>{exp.company}</h4>
+                    <span className="date">{exp.period}</span>
+                    <p>{exp.description}</p>
                   </motion.div>
                 </motion.div>
               ))}
@@ -929,7 +946,7 @@ const Portfolio = () => {
         </Container>
       </section>
 
-      {/* Education Section */}
+      {/* Education Section (Primary BG) */}
       <section 
         id="education" 
         className="section education-section"
@@ -937,44 +954,18 @@ const Portfolio = () => {
           padding: '100px 0',
           position: 'relative',
           backgroundColor: getSectionBackground(4),
-          color: colors.textPrimary
+          color: getSectionTextColor(4)
         }}
       >
         <Container>
           <motion.div
-            initial="hidden"
-            whileInView="visible"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8 }}
-            variants={fadeInUp}
           >
-            <h2 
-              className="section-title text-center"
-              style={{
-                fontSize: 'clamp(2rem, 5vw, 2.8rem)',
-                fontWeight: 700,
-                marginBottom: '60px',
-                color: colors.textPrimary,
-                fontFamily: "'Poppins', sans-serif",
-                position: 'relative',
-                display: 'inline-block'
-              }}
-            >
-              My Education
-              <motion.div 
-                style={{
-                  position: 'absolute',
-                  bottom: '-15px',
-                  left: '50%',
-                  transform: 'translateX(-50%)',
-                  width: '80px',
-                  height: '4px',
-                  background: `linear-gradient(90deg, ${colors.primary}, ${colors.secondary})`,
-                  borderRadius: '2px'
-                }}
-                layoutId="sectionDivider"
-              />
-            </h2>
+            <h2 className="section-title">My Education</h2>
+            <div className="section-divider"></div>
             <div className="timeline">
               {education.map((edu, index) => (
                 <motion.div
@@ -988,45 +979,11 @@ const Portfolio = () => {
                   <motion.div
                     className="timeline-content"
                     whileHover={{ y: -5, boxShadow: "0 10px 25px rgba(0, 0, 0, 0.1)" }}
-                    style={{
-                      backgroundColor: isDarkMode ? 'rgba(10, 25, 47, 0.5)' : 'rgba(248, 249, 250, 0.7)',
-                      padding: '30px',
-                      borderRadius: '15px',
-                      borderLeft: `5px solid ${colors.primary}`,
-                      color: colors.textPrimary
-                    }}
                   >
-                    <h3 style={{ 
-                      fontSize: '1.5rem',
-                      color: colors.primary,
-                      marginBottom: '10px',
-                      fontFamily: "'Poppins', sans-serif"
-                    }}>
-                      {edu.degree}
-                    </h3>
-                    <h4 style={{ 
-                      fontSize: '1.2rem',
-                      color: colors.textPrimary,
-                      marginBottom: '10px',
-                      fontWeight: 600
-                    }}>
-                      {edu.institution}
-                    </h4>
-                    <span className="date" style={{ 
-                      display: 'block',
-                      marginBottom: '15px',
-                      color: colors.primary,
-                      fontWeight: 500
-                    }}>
-                      {edu.year}
-                    </span>
-                    <p style={{ 
-                      marginBottom: 0,
-                      lineHeight: 1.8,
-                      color: colors.textPrimary
-                    }}>
-                      {edu.description}
-                    </p>
+                    <h3>{edu.degree}</h3>
+                    <h4>{edu.institution}</h4>
+                    <span className="date">{edu.year}</span>
+                    <p>{edu.description}</p>
                   </motion.div>
                 </motion.div>
               ))}
@@ -1035,7 +992,7 @@ const Portfolio = () => {
         </Container>
       </section>
 
-      {/* Work Section */}
+      {/* Work Section (Secondary BG) */}
       <section 
         id="work" 
         className="section work-section"
@@ -1043,7 +1000,7 @@ const Portfolio = () => {
           padding: '100px 0',
           position: 'relative',
           backgroundColor: getSectionBackground(5),
-          color: colors.textPrimary
+          color: getSectionTextColor(5)
         }}
       >
         <Container>
@@ -1124,11 +1081,11 @@ const Portfolio = () => {
       <section 
         id="testimonials" 
         className="section testimonials-section"
-       style={{
+        style={{
           padding: '100px 0',
           position: 'relative',
-          backgroundColor: getSectionBackground(5),
-          color: colors.textPrimary
+          backgroundColor: getSectionBackground(6),
+          color: getSectionTextColor(6)
         }}
       >
  <Container>
@@ -1282,11 +1239,11 @@ const Portfolio = () => {
       <section 
         id="blog" 
         className="section blog-section"
-       style={{
+        style={{
           padding: '100px 0',
           position: 'relative',
-          backgroundColor: getSectionBackground(5),
-          color: colors.textPrimary
+          backgroundColor: getSectionBackground(7),
+          color: getSectionTextColor(7)
         }}
       >
               <Container>
@@ -1485,8 +1442,8 @@ const Portfolio = () => {
         style={{
           padding: '100px 0',
           position: 'relative',
-          backgroundColor: getSectionBackground(5),
-          color: colors.textPrimary
+          backgroundColor: getSectionBackground(8),
+          color: getSectionTextColor(8)
         }}
       >
                 <Container>
