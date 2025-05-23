@@ -732,8 +732,8 @@ const backendSkills = [
                     fontSize: '1.1rem',
                     color: colors.textPrimary
                   }}>
-                    I'm a passionate and self-motivated Full-Stack Developer with 5+ years of experience building cutting-edge web applications. I specialize in JavaScript technologies across the stack and have hands-on experience with tools like HTML, CSS, JavaScript, PHP, Java, Spring Boot, React.js, Next.js, and Node.js. I thrive in fast-paced environments, bringing a proactive mindset and a deep curiosity for innovation—especially in AI and data science. I enjoy translating complex problems into simple, elegant solutions and collaborating to deliver impactful, user-focused software.
-                   </p>
+                    I’m a passionate and self-motivated Software Developer with a strong foundation in both front-end and back-end technologies. I thrive in fast-paced environments and bring a proactive mindset to every project I undertake. With hands-on experience in a wide range of modern tools and frameworks—such as HTML, CSS, JavaScript, PHP, Java, Spring Boot, React.js, Next.js, and Node.js—I specialize in building efficient, scalable, and user-focused web applications. My journey has been shaped by a deep curiosity for innovation, especially in artificial intelligence and data science, and a commitment to continuous learning. I enjoy translating complex problems into simple, elegant solutions and collaborating with teams to bring impactful ideas to life. Whether it's crafting responsive UIs or designing powerful APIs, I am dedicated to creating high-quality software that makes a difference
+                    </p>
                           
                 </div>
               </Col>
