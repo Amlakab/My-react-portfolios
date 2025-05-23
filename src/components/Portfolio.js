@@ -720,12 +720,20 @@ const backendSkills = [
                 <div className="about-content" style={{ paddingLeft: '0', paddingTop: '40px', paddingLeft: '0' }}>
                   <h3 style={{ 
                     fontSize: 'clamp(1.5rem, 3vw, 2rem)', 
-                    marginBottom: '25px', 
+                    marginBottom: '8px', 
                     color: colors.textPrimary,
                     fontFamily: "'Poppins', sans-serif"
                   }}>
                     Who is Amlakie?
                   </h3>
+                  <h5 style={{ 
+                    fontSize: 'clamp(1.2rem, 3vw, 1.2rem)', 
+                    marginBottom: '25px', 
+                    color: colors.textPrimary,
+                    fontFamily: "'Poppins', sans-serif"
+                  }}>
+                    Software Developer
+                  </h5>
                   <p style={{ 
                     marginBottom: '20px', 
                     lineHeight: 1.8, 
