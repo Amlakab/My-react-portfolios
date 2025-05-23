@@ -1,10 +1,13 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence, useAnimation, useInView } from 'framer-motion';
 import { Container, Row, Col, Navbar, Nav } from 'react-bootstrap';
-import { FiGithub, FiLinkedin, FiMail, FiDownload, FiExternalLink } from 'react-icons/fi';
-import { FaReact, FaNodeJs, FaPython, FaJava, FaPhone, FaMapMarker, FaSun, FaMoon, FaServer } from 'react-icons/fa';
+import { FiGithub, FiLinkedin, FiMail, FiDownload, FiExternalLink, FiArrowUp } from 'react-icons/fi';
+import { FaReact, FaNodeJs, FaPython, FaJava, FaPhone, FaMapMarker, FaSun, FaMoon, FaServer, FaMapMarkedAlt, FaChevronCircleRight } from 'react-icons/fa';
 import { SiTypescript, SiMongodb, SiPostgresql, SiFramer } from 'react-icons/si';
 import { useTheme } from '../context/ThemeContext';
+import { BsTelegram, BsTwitter } from 'react-icons/bs';
+import { IoMdMail } from 'react-icons/io';
+import { AiFillGithub, AiFillLinkedin } from 'react-icons/ai';
 
 const Portfolio = () => {
   const { isDarkMode, toggleTheme } = useTheme();
@@ -1290,7 +1293,7 @@ const backendSkills = [
 {/* Work Section */}
 <section 
   id="work" 
-  className="section work-section"
+  className="section work-section "
   style={{
     padding: '100px 0',
     position: 'relative',
@@ -2108,7 +2111,7 @@ const backendSkills = [
                     fontFamily: "'Poppins', sans-serif",
                     margin: '15px 0'
                   }}>Email</h3>
-                  <p style={{ color: colors.textPrimary }}>contact@amlakie.com</p>
+                  <p style={{ color: colors.textPrimary }}>amlakieab4@gmail.com</p>
                 </motion.div>
               </Col>
             </Row>
@@ -2278,254 +2281,307 @@ const backendSkills = [
       </section>
 
 {/* Footer */}
-<footer 
-  className="footer"
-  style={{
-    backgroundColor: colors.bgPrimary,
-    color: colors.textPrimary,
-    padding: '60px 0',
-    textAlign: 'center',
-    borderTop: `1px solid ${colors.border}`
-  }}
->
-  <Container>
-    <motion.div
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.6 }}
-    >
-      <div style={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
-        gap: '40px',
-        marginBottom: '50px',
-        textAlign: 'left'
-      }}>
-        {/* About Section */}
-        <div className="box">
-          <h3 style={{ marginBottom: '15px', fontSize: '1.5rem' }}>Amlakie's Portfolio</h3>
-          <p style={{ opacity: 0.8, lineHeight: 1.6 }}>
-            Thank you for visiting my personal portfolio website. Connect with me over socials. <br/><br/> Keep Rising 🚀. Connect with me over live chat!
-          </p>
-        </div>
 
-        {/* Quick Links */}
-        <div className="box">
-          <h3 style={{ marginBottom: '15px', fontSize: '1.2rem' }}>Quick Links</h3>
-          <ul style={{ listStyle: 'none', paddingLeft: 0 }}>
-            {[
-              { title: "Home", id: "home" },
-              { title: "About", id: "about" },
-              { title: "Skills", id: "skills" },
-              { title: "Education", id: "education" },
-              { title: "Work", id: "work" },
-              { title: "Experience", id: "experience" }
-            ].map((link, index) => (
-              <li key={index} style={{ marginBottom: '10px' }}>
-                <a 
-                  href={`#${link.id}`} 
-                  style={{ 
-                    color: colors.textPrimary,
-                    textDecoration: 'none',
+    <footer
+      className="footer"
+      style={{
+        backgroundColor: '#000',
+        color: '#fff',
+        padding: '60px 0 100px', // extra space for back-to-top button
+        textAlign: 'center',
+        borderTop: '1px solid #fff'
+      }}
+    >
+      <Container>
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          {/* Footer Grid Layout */}
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+            gap: '40px',
+            marginBottom: '50px',
+            textAlign: 'left'
+          }}>
+            {/* About Section */}
+            <div className="box">
+              <h3 style={{
+                marginBottom: '15px',
+                fontSize: '1.5rem',
+                color: '#fff'
+              }}>Amlakie's Portfolio</h3>
+              <p style={{
+                opacity: 0.8,
+                lineHeight: 1.6,
+                color: '#fff'
+              }}>
+                Thank you for visiting my personal portfolio website. Connect with me over socials. <br/><br/> Keep Rising 🚀. Connect with me over live chat!
+              </p>
+            </div>
+
+            {/* Quick Links */}
+            <div className="box">
+              <h3 style={{
+                marginBottom: '15px',
+                fontSize: '1.2rem',
+                color: '#fff'
+              }}>Quick Links</h3>
+              <ul style={{
+                listStyle: 'none',
+                paddingLeft: 0
+              }}>
+                {[
+                  { title: "Home", id: "home" },
+                  { title: "About", id: "about" },
+                  { title: "Skills", id: "skills" },
+                  { title: "Education", id: "education" },
+                  { title: "Work", id: "work" },
+                  { title: "Experience", id: "experience" }
+                ].map((link, index) => (
+                  <li key={index} style={{ marginBottom: '10px' }}>
+                    <a
+                      href={`#${link.id}`}
+                      style={{
+                        textDecoration: 'none',
+                        color: '#fff',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '8px',
+                        fontWeight: 500
+                      }}
+                      onMouseOver={(e) => e.currentTarget.style.color = colors.primary}
+                      onMouseOut={(e) => e.currentTarget.style.color = '#fff'}
+                    >
+                      <FaChevronCircleRight /> {link.title}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Contact Info + Social Media */}
+            <div className="box">
+              <h3 style={{
+                marginBottom: '15px',
+                fontSize: '1.2rem',
+                color: '#fff'
+              }}>Contact Info</h3>
+              <p style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '10px',
+                marginBottom: '10px',
+                opacity: 0.9
+              }}>
+                <FaPhone size={20} /> +251 9 12 43 55 73
+              </p>
+              <p style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '10px',
+                marginBottom: '10px',
+                opacity: 0.9
+              }}>
+                <IoMdMail size={20} /> amlakieab4@gmail.com
+              </p>
+              <p style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '10px',
+                marginBottom: '20px',
+                opacity: 0.9
+              }}>
+                <FaMapMarkedAlt size={20} /> Adiss Abeba, Ethiopia
+              </p>
+
+              {/* Social Media Icons */}
+              <div style={{
+                display: 'flex',
+                gap: '15px',
+                justifyContent: 'flex-start',
+                flexWrap: 'wrap'
+              }}>
+                <a
+                  href="https://www.linkedin.com/in/Amlakie "
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="LinkedIn"
+                  style={{
+                    fontSize: '1.5rem',
+                    color: '#fff',
+                    width: '45px',
+                    height: '45px',
+                    borderRadius: '50%',
                     display: 'flex',
                     alignItems: 'center',
-                    gap: '8px',
-                    fontWeight: 500
+                    justifyContent: 'center',
+                    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                    transition: 'all 0.3s ease',
+                    textDecoration: 'none'
                   }}
+                  onMouseOver={(e) => e.currentTarget.style.backgroundColor = colors.primary}
+                  onMouseOut={(e) => e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)'}
                 >
-                  <i className="fas fa-chevron-circle-right"></i> {link.title}
+                  <AiFillLinkedin size={20} />
                 </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        {/* Contact Info */}
-        <div className="box">
-          <h3 style={{ marginBottom: '15px', fontSize: '1.2rem' }}>Contact Info</h3>
-          <p style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '10px', opacity: 0.9 }}>
-            <i className="fas fa-phone" style={{ fontSize: '1.1rem' }}></i>+251 9 12 43 55 73
-          </p>
-          <p style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '10px', opacity: 0.9 }}>
-            <i className="fas fa-envelope" style={{ fontSize: '1.1rem' }}></i>amlakieab4@gmail.com
-          </p>
-          <p style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '20px', opacity: 0.9 }}>
-            <i className="fas fa-map-marked-alt" style={{ fontSize: '1.1rem' }}></i>Adiss Abeba, Ethiopia
-          </p>
-
-          {/* Social Media Icons */}
-          <div style={{
-            display: 'flex',
-            gap: '15px',
-            justifyContent: 'flex-start',
-            flexWrap: 'wrap'
-          }}>
-            <a 
-              href="https://www.linkedin.com/in/Amlakie " 
-              target="_blank" 
-              rel="noopener noreferrer"
-              aria-label="LinkedIn"
-              style={{
-                fontSize: '1.5rem',
-                color: colors.textPrimary,
-                width: '45px',
-                height: '45px',
-                borderRadius: '50%',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                backgroundColor: 'rgba(255, 255, 255, 0.1)',
-                transition: 'all 0.3s ease',
-                textDecoration: 'none'
-              }}
-              onMouseOver={(e) => e.currentTarget.style.backgroundColor = colors.primary}
-              onMouseOut={(e) => e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)'}
-            >
-              <i className="fab fa-linkedin-in"></i>
-            </a>
-            <a 
-              href="https://github.com/Amlakab " 
-              target="_blank" 
-              rel="noopener noreferrer"
-              aria-label="GitHub"
-              style={{
-                fontSize: '1.5rem',
-                color: colors.textPrimary,
-                width: '45px',
-                height: '45px',
-                borderRadius: '50%',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                backgroundColor: 'rgba(255, 255, 255, 0.1)',
-                transition: 'all 0.3s ease',
-                textDecoration: 'none'
-              }}
-              onMouseOver={(e) => e.currentTarget.style.backgroundColor = colors.primary}
-              onMouseOut={(e) => e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)'}
-            >
-              <i className="fab fa-github"></i>
-            </a>
-            <a 
-              href="mailto:amlakieab4@gmail.com" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              aria-label="Email"
-              style={{
-                fontSize: '1.5rem',
-                color: colors.textPrimary,
-                width: '45px',
-                height: '45px',
-                borderRadius: '50%',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                backgroundColor: 'rgba(255, 255, 255, 0.1)',
-                transition: 'all 0.3s ease',
-                textDecoration: 'none'
-              }}
-              onMouseOver={(e) => e.currentTarget.style.backgroundColor = colors.primary}
-              onMouseOut={(e) => e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)'}
-            >
-              <i className="fas fa-envelope"></i>
-            </a>
-            <a 
-              href="https://twitter.com/amlakie " 
-              target="_blank" 
-              rel="noopener noreferrer"
-              aria-label="Twitter"
-              style={{
-                fontSize: '1.5rem',
-                color: colors.textPrimary,
-                width: '45px',
-                height: '45px',
-                borderRadius: '50%',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                backgroundColor: 'rgba(255, 255, 255, 0.1)',
-                transition: 'all 0.3s ease',
-                textDecoration: 'none'
-              }}
-              onMouseOver={(e) => e.currentTarget.style.backgroundColor = colors.primary}
-              onMouseOut={(e) => e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)'}
-            >
-              <i className="fab fa-twitter"></i>
-            </a>
-            <a 
-              href="https://t.me/amlak1221 " 
-              target="_blank" 
-              rel="noopener noreferrer"
-              aria-label="Telegram"
-              style={{
-                fontSize: '1.5rem',
-                color: colors.textPrimary,
-                width: '45px',
-                height: '45px',
-                borderRadius: '50%',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                backgroundColor: 'rgba(255, 255, 255, 0.1)',
-                transition: 'all 0.3s ease',
-                textDecoration: 'none'
-              }}
-              onMouseOver={(e) => e.currentTarget.style.backgroundColor = colors.primary}
-              onMouseOut={(e) => e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)'}
-            >
-              <i className="fab fa-telegram-plane"></i>
-            </a>
+                <a
+                  href="https://github.com/Amlakab "
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="GitHub"
+                  style={{
+                    fontSize: '1.5rem',
+                    color: '#fff',
+                    width: '45px',
+                    height: '45px',
+                    borderRadius: '50%',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                    transition: 'all 0.3s ease',
+                    textDecoration: 'none'
+                  }}
+                  onMouseOver={(e) => e.currentTarget.style.backgroundColor = colors.primary}
+                  onMouseOut={(e) => e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)'}
+                >
+                  <AiFillGithub size={20} />
+                </a>
+                <a
+                  href="mailto:amlakieab4@gmail.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Email"
+                  style={{
+                    fontSize: '1.5rem',
+                    color: '#fff',
+                    width: '45px',
+                    height: '45px',
+                    borderRadius: '50%',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                    transition: 'all 0.3s ease',
+                    textDecoration: 'none'
+                  }}
+                  onMouseOver={(e) => e.currentTarget.style.backgroundColor = colors.primary}
+                  onMouseOut={(e) => e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)'}
+                >
+                  <IoMdMail size={20} />
+                </a>
+                <a
+                  href="https://twitter.com/amlakie "
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Twitter"
+                  style={{
+                    fontSize: '1.5rem',
+                    color: '#fff',
+                    width: '45px',
+                    height: '45px',
+                    borderRadius: '50%',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                    transition: 'all 0.3s ease',
+                    textDecoration: 'none'
+                  }}
+                  onMouseOver={(e) => e.currentTarget.style.backgroundColor = colors.primary}
+                  onMouseOut={(e) => e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)'}
+                >
+                  <BsTwitter size={20} />
+                </a>
+                <a
+                  href="https://t.me/amlak1221 "
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Telegram"
+                  style={{
+                    fontSize: '1.5rem',
+                    color: '#fff',
+                    width: '45px',
+                    height: '45px',
+                    borderRadius: '50%',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                    transition: 'all 0.3s ease',
+                    textDecoration: 'none'
+                  }}
+                  onMouseOver={(e) => e.currentTarget.style.backgroundColor = colors.primary}
+                  onMouseOut={(e) => e.currentTarget.style.backgroundColor = 'rgba(255, 255, 255, 0.1)'}
+                >
+                  <BsTelegram size={20} />
+                </a>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
 
-      {/* Credit Line */}
-      <p style={{ 
-        fontSize: '1rem',
-        opacity: 0.7,
-        marginBottom: '30px'
-      }}>
-        Designed with <i className="fa fa-heart pulse" style={{ color: '#ff4d4d', margin: '0 5px' }}></i> by{' '}
-        <a 
-          href="https://www.linkedin.com/in/Amlakie " 
-          target="_blank" 
-          rel="noopener noreferrer"
-          style={{
-            color: colors.primary,
-            fontWeight: 600,
-            textDecoration: 'none'
-          }}
-        >
-          Amlakie Abebaw
-        </a>
-      </p>
+          {/* Credit Line */}
+          <p style={{
+            fontSize: '1rem',
+            opacity: 0.7,
+            marginBottom: '30px',
+            color: '#fff'
+          }}>
+            Designed with{' '}
+            <i className="fa fa-heart pulse" style={{ color: '#ff4d4d', margin: '0 5px' }}></i>{' '}
+            by{' '}
+            <a
+              href="https://www.linkedin.com/in/Amlakie "
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                color: colors.primary,
+                fontWeight: 600,
+                textDecoration: 'none'
+              }}
+              onMouseOver={(e) => e.currentTarget.style.color = colors.primary}
+            >
+              Amlakie Abebaw
+            </a>
+          </p>
+        </motion.div>
+      </Container>
 
-      {/* Back to Top Button */}
+      {/* Back to Top Button - Bottom Right Corner */}
       <motion.button
-        whileHover={{ scale: 1.05, boxShadow: `0 5px 15px ${colors.primary}30` }}
-        whileTap={{ scale: 0.95 }}
-        className="btn-outline btn-sm mt-3"
+        whileHover={{ scale: 1.1, boxShadow: `0 5px 15px rgba(255, 255, 255, 0.3)` }}
+        whileTap={{ scale: 0.9 }}
         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
         style={{
-          backgroundColor: 'transparent',
-          color: colors.primary,
-          border: `2px solid ${colors.primary}`,
-          padding: '10px 25px',
+          position: 'fixed',
+          bottom: '20px',
+          right: '20px',
+          zIndex: 1000,
+          backgroundColor: 'rgba(255, 255, 255, 0.1)',
+          color: '#fff',
+          border: 'none',
+          padding: '12px 18px',
           borderRadius: '50px',
-          fontWeight: 600,
           cursor: 'pointer',
-          display: 'inline-flex',
+          display: 'flex',
           alignItems: 'center',
-          fontSize: '0.95rem',
-          transition: 'all 0.3s ease'
+          justifyContent: 'center',
+          gap: '8px',
+          fontSize: '0.9rem',
+          backdropFilter: 'blur(5px)'
         }}
+        aria-label="Back to top"
+        onMouseOver={(e) => e.currentTarget.style.color = colors.primary}
+        onMouseOut={(e) => e.currentTarget.style.color = '#fff'}
       >
-        Back to Top
+        <FiArrowUp />
       </motion.button>
-    </motion.div>
-  </Container>
-</footer>
+    </footer>
+
     </div>
   );
 };
