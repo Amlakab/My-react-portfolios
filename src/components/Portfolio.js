@@ -67,34 +67,12 @@ const Portfolio = () => {
     "/images/profile3.png"
   ];
 
-  useEffect(() => {
-    const nameInterval = setInterval(() => {
-      setNameIndex((prev) => (prev + 1) % names.length);
-    }, 3000);
-
-    const profileInterval = setInterval(() => {
-      setProfileIndex((prev) => (prev + 1) % profiles.length);
-    }, 4000);
-
-    return () => {
-      clearInterval(nameInterval);
-      clearInterval(profileInterval);
-    };
-  }, []);
-
-  useEffect(() => {
-    if (isInView) {
-      controls.start("visible");
-    }
-  }, [isInView]);
-
-  const scrollToSection = (sectionId) => {
-    setActiveSection(sectionId);
-    const element = document.getElementById(sectionId);
-    element?.scrollIntoView({ behavior: 'smooth' });
-  };
-
-  const projects = [
+  // Section order
+  const sections = [
+    'home', 'about', 'skills', 'experience', 'education', 'work', 
+    'testimonials', 'blog', 'contact'
+  ];
+ const projects = [
     {
       id: 1,
       title: "Hospital Management System",
@@ -241,6 +219,7 @@ const backendSkills = [
   { name: "Java", value: 65, icon: <FaJava />, category: "backend" }
 ];
 
+
   // Animation variants
   const fadeInUp = {
     hidden: { opacity: 0, y: 50 },
@@ -257,11 +236,66 @@ const backendSkills = [
     visible: { opacity: 1, x: 0 }
   };
 
-  // Section order
-  const sections = [
-    'home', 'about', 'skills', 'experience', 'education', 'work', 
-    'testimonials', 'blog', 'contact'
-  ];
+  // Scroll to section function
+  const scrollToSection = (sectionId) => {
+    setActiveSection(sectionId);
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  // Track scroll position to update active section
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY + 200; // Adding offset
+      
+      for (const section of sections) {
+        const element = document.getElementById(section);
+        if (element) {
+          const offsetTop = element.offsetTop;
+          const offsetHeight = element.offsetHeight;
+          
+          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+            if (activeSection !== section) {
+              setActiveSection(section);
+            }
+            break;
+          }
+        }
+      }
+    };
+
+    // Initial check on mount
+    handleScroll();
+    
+    // Add scroll event listener
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [sections, activeSection]);
+
+  // Name and profile image cycling
+  useEffect(() => {
+    const nameInterval = setInterval(() => {
+      setNameIndex((prev) => (prev + 1) % names.length);
+    }, 3000);
+
+    const profileInterval = setInterval(() => {
+      setProfileIndex((prev) => (prev + 1) % profiles.length);
+    }, 4000);
+
+    return () => {
+      clearInterval(nameInterval);
+      clearInterval(profileInterval);
+    };
+  }, [names.length, profiles.length]);
+
+  // Animation controls
+  useEffect(() => {
+    if (isInView) {
+      controls.start("visible");
+    }
+  }, [isInView, controls]);
 
   return (
     <div className="portfolio-app" style={{ 
@@ -300,7 +334,8 @@ const backendSkills = [
       <Navbar expand="lg" fixed="top" className="portfolio-nav" style={{ 
         backgroundColor: isDarkMode ? 'rgba(10, 25, 47, 0.9)' : 'rgba(248, 249, 250, 0.9)',
         backdropFilter: 'blur(10px)',
-        color: colors.textPrimary
+        color: colors.textPrimary,
+        transition: 'background-color 0.3s ease'
       }}>
         <Container>
           <motion.div
@@ -318,14 +353,35 @@ const backendSkills = [
                 fontFamily: "'Poppins', sans-serif",
                 letterSpacing: '1px'
               }}
+              onClick={(e) => {
+                e.preventDefault();
+                scrollToSection('home');
+              }}
             >
               Amlakie
             </Navbar.Brand>
           </motion.div>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" style={{ borderColor: colors.primary }} />
+          
+          <Navbar.Toggle 
+            aria-controls="basic-navbar-nav" 
+            style={{ 
+              borderColor: isDarkMode ? '#ffffff' : colors.primary,
+              color: isDarkMode ? '#ffffff' : colors.primary 
+            }}
+          >
+            <span 
+              className="navbar-toggler-icon" 
+              style={{
+                backgroundImage: isDarkMode ? 
+                  "url(\"data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e\")" :
+                  "url(\"data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%280, 0, 0, 0.55%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e\")"
+              }}
+            />
+          </Navbar.Toggle>
+          
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ms-auto">
-              {sections.map((item, index) => (
+              {sections.map((item) => (
                 <motion.div
                   key={item}
                   whileHover={{ scale: 1.1 }}
@@ -334,7 +390,10 @@ const backendSkills = [
                   <Nav.Link
                     href={`#${item}`}
                     active={activeSection === item}
-                    onClick={() => scrollToSection(item)}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      scrollToSection(item);
+                    }}
                     className="nav-link"
                     style={{
                       color: activeSection === item ? colors.primary : colors.textPrimary,
@@ -344,7 +403,8 @@ const backendSkills = [
                       fontSize: '0.95rem',
                       textTransform: 'capitalize',
                       letterSpacing: '1px',
-                      fontFamily: "'Poppins', sans-serif"
+                      fontFamily: "'Poppins', sans-serif",
+                      transition: 'color 0.3s ease'
                     }}
                   >
                     {item.charAt(0).toUpperCase() + item.slice(1)}
@@ -359,18 +419,24 @@ const backendSkills = [
                           backgroundColor: colors.primary
                         }}
                         layoutId="underline"
+                        transition={{ type: 'spring', stiffness: 300, damping: 20 }}
                       />
                     )}
                   </Nav.Link>
                 </motion.div>
               ))}
+              
               <motion.div
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
                 style={{ marginLeft: '15px', cursor: 'pointer' }}
                 onClick={toggleTheme}
               >
-                {isDarkMode ? <FaSun color={colors.primary} size={20} /> : <FaMoon color={colors.primary} size={20} />}
+                {isDarkMode ? (
+                  <FaSun color={colors.primary} size={20} />
+                ) : (
+                  <FaMoon color={colors.primary} size={20} />
+                )}
               </motion.div>
             </Nav>
           </Navbar.Collapse>
@@ -462,9 +528,16 @@ const backendSkills = [
                       fontSize: '1rem',
                       boxShadow: `0 5px 15px ${colors.primary}30`
                     }}
+                    onClick={() => {
+                      const workSection = document.getElementById('work');
+                      if (workSection) {
+                        workSection.scrollIntoView({ behavior: 'smooth' });
+                      }
+                    }}
                   >
                     View My Work
                   </motion.button>
+
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
@@ -480,6 +553,15 @@ const backendSkills = [
                       display: 'inline-flex',
                       alignItems: 'center',
                       fontSize: '1rem'
+                    }}
+                    onClick={() => {
+                      // Create a temporary anchor element to trigger download
+                      const link = document.createElement('a');
+                      link.href = '/documents/MyCv.pdf';
+                      link.download = 'MyCv.pdf';
+                      document.body.appendChild(link);
+                      link.click();
+                      document.body.removeChild(link);
                     }}
                   >
                     <FiDownload style={{ marginRight: '8px' }} /> Download CV
