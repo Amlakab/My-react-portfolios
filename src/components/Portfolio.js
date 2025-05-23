@@ -62,9 +62,9 @@ const Portfolio = () => {
 
   const names = ["Amlakie", "Developer", "Designer", "Creator"];
   const profiles = [
-    "/images/profile1.png",
-    "/images/profile2.png",
-    "/images/profile3.png"
+    "/images/profile1.jpg",
+    "/images/profile2.jpg",
+    "/images/profile3.jpg"
   ];
 
   // Section order
@@ -73,23 +73,23 @@ const Portfolio = () => {
     'testimonials', 'blog', 'contact'
   ];
  const projects = [
-    {
+     {
       id: 1,
-      title: "Hospital Management System",
-      description: "Comprehensive system for patient records, appointments, and billing with AI diagnostics integration",
-      tags: ["React", "Node.js", "MongoDB", "AI"],
-      image: "/images/hospital-system.png",
-      github: "https://github.com/yourusername/project1"
-
+      title: "E-commerce Platform",
+      description: "Amazon-like shopping with AR product preview",
+      tags: ["React", "Node.js", "AR.js"],
+      image: "/images/ecommerce.png",
+      github: "https://github.com/Amlakab/Amlakie-e-commerce",
+      link: "https://amlakie-e-commerce.vercel.app/"
     },
     {
       id: 2,
-      title: "Transport Management",
-      description: "Fleet tracking with real-time logistics optimization",
-      tags: ["React", "Python", "PostgreSQL"],
-      image: "/images/transport-system.png",
-      github: "https://github.com/yourusername/project1"
-
+      title: "Portfolio Template",
+      description: "Customizable 3D portfolio with interactive elements",
+      tags: ["React", "Framer Motion", "Three.js"],
+      image: "/images/my-portfolio.png",
+      github: "https://github.com/Amlakab/project1",
+      link: "https://my-react-portfolios.vercel.app/"
     },
     {
       id: 3,
@@ -97,7 +97,8 @@ const Portfolio = () => {
       description: "Advanced calculator with 3D graphing capabilities",
       tags: ["JavaScript", "WebGL", "MathJS"],
       image: "/images/calculator.png",
-      github: "https://github.com/yourusername/project1"
+      github: "https://github.com/Amlakab/Calculator",
+      link: "https://Calculator.vercel.app/"
     },
     {
       id: 4,
@@ -105,23 +106,26 @@ const Portfolio = () => {
       description: "Interactive institutional portal with virtual campus tour",
       tags: ["React", "Three.js", "Firebase"],
       image: "/images/insa-website.png",
-      github: "https://github.com/yourusername/project1"
+      github: "https://github.com/Amlakab/INSA-WEB",
+      link: "https://insa-web.vercel.app/"
     },
-    {
+       {
       id: 5,
-      title: "E-commerce Platform",
-      description: "Amazon-like shopping with AR product preview",
-      tags: ["React", "Node.js", "AR.js"],
-      image: "/images/ecommerce.png",
-      github: "https://github.com/yourusername/project1"
+      title: "Hospital Management System",
+      description: "Comprehensive system for patient records, appointments, and billing with AI diagnostics integration",
+      tags: ["React", "Node.js", "MongoDB", "AI"],
+      image: "/images/hospital-system.png",
+      github: "https://github.com/Amlakab/HIMS"
+
     },
     {
       id: 6,
-      title: "Portfolio Template",
-      description: "Customizable 3D portfolio with interactive elements",
-      tags: ["React", "Framer Motion", "Three.js"],
-      image: "/images/portfolio-template.png",
-      github: "https://github.com/yourusername/project1"
+      title: "Transport Management",
+      description: "Fleet tracking with real-time logistics optimization",
+      tags: ["React", "Python", "PostgreSQL"],
+      image: "/images/transport-system2.png",
+      github: "https://github.com/Amlakab/TMS"
+
     }
   ];
 
@@ -163,7 +167,7 @@ const Portfolio = () => {
       name: "Sarah Johnson",
       role: "CEO, TechCorp",
       content: "Amlakie delivered our project ahead of schedule with exceptional quality. His attention to detail and problem-solving skills are remarkable.",
-      avatar: "/images/testimonial1.png",
+      avatar: "/images/testimonial1.jpeg",
       rating: 5
     },
     {
@@ -171,7 +175,7 @@ const Portfolio = () => {
       name: "Michael Chen",
       role: "CTO, InnovateX",
       content: "Working with Amlakie was a pleasure. He transformed our complex requirements into a beautiful, functional application with stunning animations.",
-      avatar: "/images/testimonial2.png",
+      avatar: "/images/testimonial2.jpeg",
       rating: 5
     }
   ];
@@ -182,7 +186,7 @@ const Portfolio = () => {
       title: "Building Scalable React Applications",
       excerpt: "Learn the best practices for creating React apps that can grow with your user base while maintaining performance.",
       date: "May 15, 2023",
-      image: "/images/blog1.png",
+      image: "/images/blog1.jpg",
       category: "React"
     },
     {
@@ -190,7 +194,7 @@ const Portfolio = () => {
       title: "The Future of Web Development",
       excerpt: "Exploring emerging technologies that will shape the next decade of web development including Web3 and AI integration.",
       date: "April 28, 2023",
-      image: "/images/blog2.png",
+      image: "/images/blog2.jpg",
       category: "Web"
     }
   ];
@@ -684,8 +688,8 @@ const backendSkills = [
                   style={{
                     position: 'relative',
                     width: '100%',
-                    maxWidth: '320px',
-                    height: '320px',
+                    maxWidth: '350px',
+                    height: '450px',
                     borderRadius: '20px',
                     overflow: 'hidden',
                     boxShadow: '0 20px 40px rgba(0, 0, 0, 0.1)',
@@ -694,7 +698,7 @@ const backendSkills = [
                   }}
                 >
                   <img 
-                    src="/images/about.png" 
+                    src="/images/about.jpg" 
                     alt="About" 
                     className="about-image" 
                     style={{
@@ -731,60 +735,15 @@ const backendSkills = [
                     fontSize: '1.1rem',
                     color: colors.textPrimary
                   }}>
-                    My approach combines technical expertise with creative problem-solving to deliver
-                    high-quality, user-friendly applications that push the boundaries of modern web design.
-                  </p>
-                  <div className="about-info" style={{ 
-                    display: 'grid',
-                    gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-                    gap: '20px',
-                    marginTop: '40px'
-                  }}>
-                    <div className="info-item" style={{ display: 'flex', alignItems: 'center' }}>
-                      <span style={{ 
-                        fontWeight: 600, 
-                        marginRight: '15px', 
-                        minWidth: '80px',
-                        color: colors.primary
-                      }}>
-                        Name:
-                      </span>
-                      <p style={{ margin: 0, fontWeight: 500, color: colors.textPrimary }}>Amlakie</p>
-                    </div>
-                    <div className="info-item" style={{ display: 'flex', alignItems: 'center' }}>
-                      <span style={{ 
-                        fontWeight: 600, 
-                        marginRight: '15px', 
-                        minWidth: '80px',
-                        color: colors.primary
-                      }}>
-                        Email:
-                      </span>
-                      <p style={{ margin: 0, fontWeight: 500, color: colors.textPrimary }}>amlakie@example.com</p>
-                    </div>
-                    <div className="info-item" style={{ display: 'flex', alignItems: 'center' }}>
-                      <span style={{ 
-                        fontWeight: 600, 
-                        marginRight: '15px', 
-                        minWidth: '80px',
-                        color: colors.primary
-                      }}>
-                        From:
-                      </span>
-                      <p style={{ margin: 0, fontWeight: 500, color: colors.textPrimary }}>Addis Ababa, Ethiopia</p>
-                    </div>
-                    <div className="info-item" style={{ display: 'flex', alignItems: 'center' }}>
-                      <span style={{ 
-                        fontWeight: 600, 
-                        marginRight: '15px', 
-                        minWidth: '80px',
-                        color: colors.primary
-                      }}>
-                        Focus:
-                      </span>
-                      <p style={{ margin: 0, fontWeight: 500, color: colors.textPrimary }}>Interactive Web Experiences</p>
-                    </div>
-                  </div>
+                    I’m a passionate and self-motivated Software Developer with a strong foundation in both front-end and back-end technologies. I thrive in fast-paced environments and bring a proactive mindset to every project I undertake.
+
+                With hands-on experience in a wide range of modern tools and frameworks—such as HTML, CSS, JavaScript, PHP, Java, Spring Boot, React.js, Next.js, and Node.js—I specialize in building efficient, scalable, and user-focused web applications.
+
+                My journey has been shaped by a deep curiosity for innovation, especially in artificial intelligence and data science, and a commitment to continuous learning. I enjoy translating complex problems into simple, elegant solutions and collaborating with teams to bring impactful ideas to life.
+
+                Whether it's crafting responsive UIs or designing powerful APIs, I am dedicated to creating high-quality software that makes a difference.
+                </p>
+                          
                 </div>
               </Col>
             </Row>
@@ -1549,25 +1508,30 @@ const backendSkills = [
                         }}
                         whileHover={{ opacity: 1 }}
                       >
-                        <motion.button
-                          whileHover={{ scale: 1.1 }}
-                          whileTap={{ scale: 0.9 }}
-                          className="view-btn"
-                          style={{
-                            background: colors.primary,
-                            color: '#ffffff',
-                            border: 'none',
-                            padding: '12px 25px',
-                            borderRadius: '50px',
-                            fontWeight: 600,
-                            cursor: 'pointer',
-                            display: 'inline-flex',
-                            alignItems: 'center',
-                            fontSize: '0.9rem'
-                          }}
-                        >
-                          <FiExternalLink className="me-2" /> View Project
-                        </motion.button>
+                        {proj.link && (
+                          <motion.a
+                            href={proj.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            whileHover={{ scale: 1.1 }}
+                            whileTap={{ scale: 0.9 }}
+                            style={{
+                              background: colors.primary,
+                              color: '#ffffff',
+                              border: 'none',
+                              padding: '12px 25px',
+                              borderRadius: '50px',
+                              fontWeight: 600,
+                              cursor: 'pointer',
+                              display: 'inline-flex',
+                              alignItems: 'center',
+                              fontSize: '0.9rem',
+                              textDecoration: 'none'
+                            }}
+                          >
+                            <FiExternalLink className="me-2" /> View Project
+                          </motion.a>
+                        )}
                       </motion.div>
                     </div>
                     <div className="project-info" style={{ padding: '20px', flex: 1 }}>
@@ -1669,6 +1633,7 @@ const backendSkills = [
     </motion.div>
   </Container>
 </section>
+
 
 
       {/* Testimonials Section */}
