@@ -99,7 +99,7 @@ const Portfolio = () => {
       title: "Scientific Calculator",
       description: "Advanced calculator with 3D graphing capabilities",
       tags: ["Next.js", "Typescript", "Tailwind CSS"],
-      image: "/images/calculator.png",
+      image: "/images/calculator2.png",
       github: "https://github.com/Amlakab/Amlakie-Calculator",
       link: "https://amlakie-calculator.vercel.app/"
     },
