@@ -2,14 +2,15 @@ import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence, useAnimation, useInView } from 'framer-motion';
 import { Container, Row, Col, Navbar, Nav } from 'react-bootstrap';
 import { FiGithub, FiLinkedin, FiMail, FiDownload, FiExternalLink, FiArrowUp } from 'react-icons/fi';
-import { FaReact, FaNodeJs, FaPython, FaJava, FaPhone, FaMapMarker, FaSun, FaMoon, FaServer, FaMapMarkedAlt, FaChevronCircleRight, FaCss3Alt, FaHtml5, FaJs, FaGraduationCap, FaUser, FaTools, FaProjectDiagram, FaBlog, FaEnvelope, FaQuoteRight, FaBriefcase, FaPenNib, FaEnvelopeOpenText, FaHeadset } from 'react-icons/fa';
+import { FaReact, FaNodeJs, FaPython, FaJava, FaPhone, FaMapMarker, FaSun, FaMoon, FaServer, FaMapMarkedAlt, FaChevronCircleRight, FaCss3Alt, FaHtml5, FaJs, FaGraduationCap, FaUser, FaTools, FaProjectDiagram, FaBlog, FaEnvelope, FaQuoteRight, FaBriefcase, FaPenNib, FaEnvelopeOpenText, FaHeadset, FaLaptopCode } from 'react-icons/fa';
 import { SiTypescript, SiMongodb, SiPostgresql, SiFramer, SiPhp, SiMysql, SiSpringboot, SiBootstrap, SiTailwindcss, SiNextdotjs } from 'react-icons/si';
 import { useTheme } from '../context/ThemeContext';
-import { BsChatQuote, BsTelegram, BsTwitter } from 'react-icons/bs';
+import { BsChatQuote, BsLightningChargeFill, BsTelegram, BsTwitter } from 'react-icons/bs';
 import { IoMdMail } from 'react-icons/io';
 import { AiFillGithub, AiFillLinkedin } from 'react-icons/ai';
-import { RiArticleLine, RiToolsFill } from 'react-icons/ri';
-import { MdRecordVoiceOver, MdRssFeed } from 'react-icons/md';
+import { RiArticleLine, RiCodeSSlashLine, RiToolsFill } from 'react-icons/ri';
+import { MdBuild, MdRecordVoiceOver, MdRssFeed } from 'react-icons/md';
+import { GiSkills } from 'react-icons/gi';
 
 const Portfolio = () => {
   const { isDarkMode, toggleTheme } = useTheme();
@@ -1031,7 +1032,7 @@ const backendSkills = [
                   gap: '15px'
                 }}
               >
-              <RiToolsFill color={colors.primary} />
+              <FaTools color={colors.primary} />
               My Skills
               <motion.div 
                 style={{
@@ -1399,7 +1400,7 @@ const backendSkills = [
                   gap: '15px'
                 }}
               >
-              <FaProjectDiagram color={colors.primary} />
+              <FaLaptopCode color={colors.primary} />
               My Work
               <motion.div 
                 style={{
