@@ -175,24 +175,45 @@ const education = [
   }
 ];
 
-  const testimonials = [
-    {
-      id: 1,
-      name: "Sarah Johnson",
-      role: "CEO, TechCorp",
-      content: "Amlakie delivered our project ahead of schedule with exceptional quality. His attention to detail and problem-solving skills are remarkable.",
-      avatar: "/images/testimonial1.jpeg",
-      rating: 5
-    },
-    {
-      id: 2,
-      name: "Michael Chen",
-      role: "CTO, InnovateX",
-      content: "Working with Amlakie was a pleasure. He transformed our complex requirements into a beautiful, functional application with stunning animations.",
-      avatar: "/images/testimonial2.jpeg",
-      rating: 5
-    }
-  ];
+const testimonials = [
+  {
+    id: 1,
+    name: "Sarah Johnson",
+    role: "CEO, TechCorp",
+    content:
+      "Amlakie delivered our project ahead of schedule with exceptional quality. His attention to detail and problem-solving skills are remarkable.",
+    avatar: "/images/testimonial1.jpeg",
+    rating: 5
+  },
+  {
+    id: 2,
+    name: "Michael Chen",
+    role: "CTO, InnovateX",
+    content:
+      "Working with Amlakie was a pleasure. He transformed our complex requirements into a beautiful, functional application with stunning animations.",
+    avatar: "/images/testimonial2.jpeg",
+    rating: 5
+  },
+  {
+    id: 3,
+    name: "Fatima Al-Mansoori",
+    role: "Product Manager, NexaSoft",
+    content:
+      "Amlakie showed outstanding initiative and professionalism. His ability to adapt quickly and contribute clean, scalable code made him a valuable team asset.",
+    avatar: "/images/testimonial3.jpeg",
+    rating: 5
+  },
+  {
+    id: 4,
+    name: "David Kim",
+    role: "Lead Engineer, CodeSphere",
+    content:
+      "What impressed us most was Amlakie’s ability to combine technical depth with UI elegance. His contributions significantly enhanced our project's UX.",
+    avatar: "/images/testimonial4.jpeg",
+    rating: 5
+  }
+];
+
 
   const blogPosts = [
     {
