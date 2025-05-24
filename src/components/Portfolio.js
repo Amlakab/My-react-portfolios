@@ -101,7 +101,7 @@ const Portfolio = () => {
       tags: ["Next.js", "Typescript", "Tailwind CSS"],
       image: "/images/calculator2.png",
       github: "https://github.com/Amlakab/Amlakie-Calculator",
-      link: "https://amlakie-calculator.vercel.app/"
+      link: "https://my-calculator-nu-two.vercel.app/"
     },
     {
       id: 4,
