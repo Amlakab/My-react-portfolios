@@ -11,8 +11,12 @@ import { AiFillGithub, AiFillLinkedin } from 'react-icons/ai';
 import { RiArticleLine, RiCodeSSlashLine, RiToolsFill } from 'react-icons/ri';
 import { MdBuild, MdRecordVoiceOver, MdRssFeed } from 'react-icons/md';
 import { GiSkills } from 'react-icons/gi';
+import { useNavigate } from 'react-router-dom';
 
 const Portfolio = () => {
+
+  const navigate = useNavigate();
+
   const { isDarkMode, toggleTheme } = useTheme();
   const [activeSection, setActiveSection] = useState('home');
   const [nameIndex, setNameIndex] = useState(0);
@@ -540,6 +544,9 @@ const backendSkills = [
                   }}
                 >
                   {names[nameIndex] === "Amlakie" ? "Software Engineer" : 
+                   names[nameIndex] === "Amlakie" ? "Project Manager" :
+                   names[nameIndex] === "Amlakie" ? "Developer " :  
+                   names[nameIndex] === "Developer" ? "Full Stack Developer" :
                    names[nameIndex] === "Developer" ? "Full Stack Developer" :
                    names[nameIndex] === "Designer" ? "UI/UX Expert" : "Innovative Creator"}
                 </motion.h2>
@@ -1689,6 +1696,7 @@ const backendSkills = [
                   fontSize: '1rem',
                   boxShadow: `0 5px 15px ${colors.primary}30`
                 }}
+                onClick={() => navigate('/work')}
               >
                 View All Projects
               </motion.button>
