@@ -72,7 +72,7 @@ const Portfolio = () => {
 
   // Section order
   const sections = [
-    'home', 'about', 'skills', 'experience', 'education', 'work', 
+    'home', 'about', 'education' , 'experience', 'skills' , 'work', 
     'testimonials', 'blog', 'contact'
   ];
  const projects = [
@@ -556,34 +556,7 @@ const backendSkills = [
                   creating immersive interfaces that captivate users.
                 </p>
                 <div className="hero-cta" style={{ display: 'flex', gap: '20px', flexWrap: 'wrap' }}>
-                  <motion.button
-                    whileHover={{ scale: 1.05, boxShadow: `0 10px 25px ${colors.primary}80` }}
-                    whileTap={{ scale: 0.95 }}
-                    className="btn-primary"
-                    style={{
-                      background: `linear-gradient(135deg, ${colors.primary}, ${colors.secondary})`,
-                      color: '#ffffff',
-                      border: 'none',
-                      padding: '15px 30px',
-                      borderRadius: '50px',
-                      fontWeight: 600,
-                      cursor: 'pointer',
-                      display: 'inline-flex',
-                      alignItems: 'center',
-                      fontSize: '1rem',
-                      boxShadow: `0 5px 15px ${colors.primary}30`
-                    }}
-                    onClick={() => {
-                      const workSection = document.getElementById('work');
-                      if (workSection) {
-                        workSection.scrollIntoView({ behavior: 'smooth' });
-                      }
-                    }}
-                  >
-                    View My Work
-                  </motion.button>
-
-                  <motion.button
+                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     className="btn-outline"
@@ -611,6 +584,34 @@ const backendSkills = [
                   >
                     <FiDownload style={{ marginRight: '8px' }} /> Download CV
                   </motion.button>
+                  
+                  <motion.button
+                    whileHover={{ scale: 1.05, boxShadow: `0 10px 25px ${colors.primary}80` }}
+                    whileTap={{ scale: 0.95 }}
+                    className="btn-primary"
+                    style={{
+                      background: `linear-gradient(135deg, ${colors.primary}, ${colors.secondary})`,
+                      color: '#ffffff',
+                      border: 'none',
+                      padding: '15px 30px',
+                      borderRadius: '50px',
+                      fontWeight: 600,
+                      cursor: 'pointer',
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      fontSize: '1rem',
+                      boxShadow: `0 5px 15px ${colors.primary}30`
+                    }}
+                    onClick={() => {
+                      const workSection = document.getElementById('work');
+                      if (workSection) {
+                        workSection.scrollIntoView({ behavior: 'smooth' });
+                      }
+                    }}
+                  >
+                    View My Work
+                  </motion.button>
+
                 </div>
               </motion.div>
             </Col>
@@ -743,7 +744,7 @@ const backendSkills = [
                   }}
                 >
                   <img 
-                    src="/images/about.jpg" 
+                    src="/images/about3.jpg" 
                     alt="About" 
                     className="about-image" 
                     style={{
@@ -779,7 +780,7 @@ const backendSkills = [
                     fontSize: '1.1rem',
                     color: colors.textPrimary
                   }}>
-                    I’m a passionate and self-motivated Software Developer with a strong foundation in both front-end and back-end technologies. I thrive in fast-paced environments and bring a proactive mindset to every project I undertake. With hands-on experience in a wide range of modern tools and frameworks—such as HTML, CSS, JavaScript, PHP, Java, Spring Boot, React.js, Next.js, and Node.js—I specialize in building efficient, scalable, and user-focused web applications. My journey has been shaped by a deep curiosity for innovation, especially in artificial intelligence and data science, and a commitment to continuous learning. I enjoy translating complex problems into simple, elegant solutions and collaborating with teams to bring impactful ideas to life. Whether it's crafting responsive UIs or designing powerful APIs, I am dedicated to creating high-quality software that makes a difference
+                    I’m a passionate and self-motivated Software Developer with a strong foundation in both front-end and back-end technologies. I thrive in fast-paced environments and bring a proactive mindset to every project I undertake. With hands-on experience in a wide range of modern tools and frameworks—such as HTML, CSS, JavaScript, PHP, Java, Spring Boot, React.js, Next.js, and Node.js—I specialize in building efficient, scalable, and user-focused web applications. My journey has been shaped by a deep curiosity for innovation, especially in artificial intelligence and data science, and a commitment to continuous learning. I enjoy translating complex problems into simple, elegant solutions and collaborating with teams to bring impactful ideas to life. Whether it's crafting responsive UIs or designing powerful APIs, I am dedicated to creating high-quality software that makes a difference.
                     </p>
                           
                 </div>
