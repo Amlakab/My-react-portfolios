@@ -735,7 +735,7 @@ const backendSkills = [
                     position: 'relative',
                     width: '100%',
                     maxWidth: '300px',
-                    height: '380px',
+                    height: '400px',
                     borderRadius: '20px',
                     overflow: 'hidden',
                     boxShadow: '0 20px 40px rgba(0, 0, 0, 0.1)',
