@@ -734,8 +734,8 @@ const backendSkills = [
                   style={{
                     position: 'relative',
                     width: '100%',
-                    maxWidth: '350px',
-                    height: '450px',
+                    maxWidth: '300px',
+                    height: '380px',
                     borderRadius: '20px',
                     overflow: 'hidden',
                     boxShadow: '0 20px 40px rgba(0, 0, 0, 0.1)',
@@ -744,7 +744,7 @@ const backendSkills = [
                   }}
                 >
                   <img 
-                    src="/images/about3.jpg" 
+                    src="/images/about4.jpg" 
                     alt="About" 
                     className="about-image" 
                     style={{
