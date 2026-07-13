@@ -192,7 +192,7 @@ const Portfolio = () => {
 
 const experiences = [
   {
-    role: "Full Stack Developer",
+    role: "Full Stack Developer ",
     company: "Self Employed",
     period: "2025 - Present",
     description: "Building and deploying full-stack web applications independently, focusing on scalable backend systems and engaging frontend interfaces."
