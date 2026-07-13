@@ -133,6 +133,60 @@ const Portfolio = () => {
       image: "/images/transport-system2.png",
       github: "https://github.com/Amlakab/TMS"
 
+    },
+    {
+      id: 7,
+      title: "House Rental Management",
+      description: "Comprehensive system for managing rental properties, tenant applications, and lease agreements.",
+      tags: ["Next.js","TypeScript", "Tailwind CSS", "MongoDB", "Express.js"],
+      image: "/images/house-rental-management.png",
+      github: "https://github.com/Amlakab/HRM"
+
+    },
+    {
+      id: 8,
+      title: "Cafeteria Management",
+      description: "Comprehensive system for managing cafeteria operations, including menu planning, inventory management, and order processing.",
+      tags: ["Next.js","TypeScript", "Tailwind CSS", "MongoDB", "Express.js"],
+      image: "/images/cafeteria-management.png",
+      github: "https://github.com/Amlakab/CMS"
+
+    },
+    {
+      id: 9,
+      title: "Lottery Management",
+      description: "Comprehensive system for managing lottery operations, including ticket sales, winner selection, and prize distribution.",
+      tags: ["Next.js","TypeScript", "Tailwind CSS", "MongoDB", "Express.js"],
+      image: "/images/lottery-management.png",
+      github: "https://github.com/Amlakab/LM"
+
+    },
+    {
+      id: 10,
+      title: "Spinner Game",
+      description: "A fun and interactive spinner game built with modern web technologies.",
+      tags: ["Next.js","TypeScript", "Tailwind CSS", "MongoDB", "Express.js"],
+      image: "/images/spinner-game.png",
+      github: "https://github.com/Amlakab/SG"
+
+    },
+    {
+      id: 11,
+      title: "Online Bingo Game",
+      description: "A fun and interactive bingo game built with modern web technologies.",
+      tags: ["Next.js","TypeScript", "Tailwind CSS", "MongoDB", "Express.js"],
+      image: "/images/online-bingo-game.png",
+      github: "https://github.com/Amlakab/OBG"
+
+    },
+    {
+      id: 12,
+      title: "Web Application Firewall (WAF)",
+      description: "Comprehensive system for managing web application security, including threat detection and response.",
+      tags: ["React","TypeScript", "Tailwind CSS", "PostgreSQL", "Django"],
+      image: "/images/web-application-firewall.png",
+      github: "https://github.com/Amlakab/WAF"
+
     }
   ];
 
@@ -145,8 +199,8 @@ const experiences = [
   },
   {
     role: "Web Developer | Internship",
-    company: "INSA (Information Network Security Agency)",
-    period: "March 2025 - June 2025",
+    company: "INSA (Information Network Security Administration)",
+    period: "March 2025 - September 2025",
     description: "Assisted in the development of secure web applications, contributed to frontend and backend tasks, and gained exposure to real-world software engineering practices in a government organization."
   },
   {
