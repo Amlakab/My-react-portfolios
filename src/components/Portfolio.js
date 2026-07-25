@@ -637,7 +637,7 @@ const backendSkills = [
                       // Create a temporary anchor element to trigger download
                       const link = document.createElement('a');
                       link.href = '/documents/Amlakie_Abebaw_Resume.pdf';
-                      link.download = 'MyCv.pdf';
+                      link.download = 'Amlakie_Abebaw_Resume.pdf';
                       document.body.appendChild(link);
                       link.click();
                       document.body.removeChild(link);
